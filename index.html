@@ -1,642 +1,229 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IconForge — Generate Stylized Icons</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f59e0b'/%3E%3Cstop offset='1' stop-color='%23ef4444'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Cpath d='M50 20 L62 50 L50 80 L38 50 Z' fill='white'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ===== ORİJİNAL DEĞİŞKENLER ===== */
-:root[data-theme="dark"]{--bg:#0a0a0b;--bg-2:#111114;--bg-3:#18181b;--hover:#1c1c20;--text:#f4f4f5;--text-2:#d4d4d8;--muted:#a1a1aa;--dim:#71717a;--border:rgba(255,255,255,.08);--border-s:rgba(255,255,255,.16);--accent:#f59e0b;--accent-2:#ef4444;--glow:rgba(245,158,11,.2);--success:#34d399;--danger:#f87171;--shadow:0 4px 12px rgba(0,0,0,.4);--shadow-lg:0 12px 30px rgba(0,0,0,.5)}
-:root[data-theme="light"]{--bg:#fafafa;--bg-2:#fff;--bg-3:#f3f4f6;--hover:#f9fafb;--text:#111827;--text-2:#374151;--muted:#6b7280;--dim:#9ca3af;--border:#e5e7eb;--border-s:#d1d5db;--accent:#f59e0b;--accent-2:#ef4444;--glow:rgba(245,158,11,.15);--success:#10b981;--danger:#ef4444;--shadow:0 4px 12px rgba(0,0,0,.08);--shadow-lg:0 12px 30px rgba(0,0,0,.12)}
-*{margin:0;padding:0;box-sizing:border-box}html{background:var(--bg)}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;transition:background .3s,color .3s}
-
-.topbar{height:64px;background:var(--bg-2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:14px;z-index:100;position:sticky;top:0}
-.brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:18px;color:var(--text);text-decoration:none;letter-spacing:-.5px}
-.brand-logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#f59e0b,#ef4444);display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;box-shadow:0 4px 14px var(--glow)}
-.tb-info{font-size:12px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:6px}
-.tb-divider{width:1px;height:24px;background:var(--border)}
-.tb-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
-.icon-btn{width:38px;height:38px;border-radius:9px;border:1px solid var(--border);background:var(--bg-2);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .15s}
-.icon-btn:hover{background:var(--hover);color:var(--text);border-color:var(--border-s)}
-
-.container{max-width:1400px;margin:0 auto;padding:30px 24px}
-.hero{text-align:center;margin-bottom:30px}
-.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-1.5px;margin-bottom:8px;background:linear-gradient(135deg,#f59e0b,#ef4444,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{color:var(--muted);font-size:14px;max-width:540px;margin:0 auto;line-height:1.6}
-
-.search-bar{max-width:680px;margin:0 auto 30px;display:flex;gap:8px;background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:8px;box-shadow:var(--shadow-lg);position:relative}
-.search-bar.focused{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
-.search-bar i.search-icon{position:absolute;left:24px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:15px;pointer-events:none}
-.search-bar input{flex:1;background:transparent;border:none;outline:none;padding:12px 16px 12px 38px;color:var(--text);font-size:15px;font-family:'Inter',sans-serif;font-weight:500}
-.search-bar input::placeholder{color:var(--dim)}
-.search-bar button{padding:12px 22px;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border:none;border-radius:9px;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .15s;text-transform:uppercase;letter-spacing:.5px}
-.search-bar button:hover{transform:translateY(-1px);box-shadow:0 6px 20px var(--glow)}
-.search-bar button:disabled{opacity:.5;cursor:not-allowed;transform:none}
-
-.suggest-row{max-width:680px;margin:0 auto 30px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:0 8px}
-.suggest-chip{padding:5px 12px;border-radius:999px;background:var(--bg-2);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;cursor:pointer;transition:all .15s}
-.suggest-chip:hover{background:var(--hover);color:var(--text);border-color:var(--accent)}
-
-.workspace{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
-.left-panel{background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:20px;min-height:400px}
-.section-title{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.section-title .count{margin-left:auto;font-family:'JetBrains Mono',monospace;color:var(--dim)}
-
-.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:10px;margin-bottom:20px}
-.result-card{aspect-ratio:1;background:var(--bg-3);border:1px solid var(--border);border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:12px;transition:all .15s;color:var(--text)}
-.result-card:hover{background:var(--hover);border-color:var(--accent);transform:translateY(-2px)}
-.result-card.selected{border-color:var(--accent);background:var(--glow);box-shadow:0 0 0 2px var(--glow)}
-.result-card svg{width:100%;height:100%;color:var(--text)}
-
-.preview-section{margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}
-.preview-box{background:repeating-conic-gradient(var(--bg-3) 0% 25%,var(--bg-2) 0% 50%) 50%/24px 24px;border:1px solid var(--border);border-radius:14px;padding:40px;min-height:280px;display:flex;align-items:center;justify-content:center;position:relative}
-.preview-box.bg-white{background:#fff}
-.preview-box.bg-black{background:#000}
-.preview-box.bg-game{background:linear-gradient(135deg,#1e3c72,#2a5298)}
-.preview-box.bg-anime{background:linear-gradient(135deg,#fbc2eb,#a6c1ee)}
-#preview-svg{width:200px;height:200px;display:flex;align-items:center;justify-content:center;transition:all .3s ease}
-#preview-svg svg{width:100%;height:100%;display:block}
-
-.bg-strip{display:flex;gap:5px;justify-content:center;margin-top:14px}
-.bg-tab{width:30px;height:30px;border-radius:6px;border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);background:var(--bg-2);transition:all .15s}
-.bg-tab:hover{color:var(--text)}
-.bg-tab.active{border-color:var(--accent);color:var(--accent);background:var(--glow)}
-
-.empty-state{padding:60px 20px;text-align:center;color:var(--dim)}
-.empty-state i{font-size:48px;margin-bottom:14px;display:block;opacity:.4}
-.empty-state h3{font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--text-2);margin-bottom:6px}
-.empty-state p{font-size:13px}
-.loading{padding:40px;text-align:center;color:var(--muted)}
-.loading i{font-size:24px;animation:spin 1s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* SAĞ PANEL */
-.right-panel{background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:20px;position:sticky;top:88px}
-.style-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
-.style-card{background:var(--bg-3);border:2px solid var(--border);border-radius:10px;padding:12px 8px;cursor:pointer;text-align:center;transition:all .15s}
-.style-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.style-card.active{border-color:var(--accent);background:var(--glow);box-shadow:0 0 0 2px var(--glow)}
-.style-card .emoji{font-size:22px;display:block;margin-bottom:4px}
-.style-card .name{font-size:11px;font-weight:700;color:var(--text)}
-.control-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;color:var(--text-2)}
-.control-row label{flex:1;font-weight:600}
-.control-row input[type="color"]{width:40px;height:32px;border:none;border-radius:8px;cursor:pointer;background:transparent}
-.control-row .val{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
-.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg-3);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text-2);margin-bottom:8px;transition:all .15s}
-.toggle-row:hover{background:var(--hover)}
-.toggle-row.active{border-color:var(--accent);color:var(--text)}
-.toggle-switch{width:36px;height:20px;border-radius:999px;background:var(--bg);position:relative;transition:all .2s}
-.toggle-switch::after{content:'';position:absolute;width:14px;height:14px;border-radius:50%;background:var(--muted);top:3px;left:3px;transition:all .2s}
-.toggle-row.active .toggle-switch{background:linear-gradient(135deg,#f59e0b,#ef4444)}
-.toggle-row.active .toggle-switch::after{left:19px;background:#fff}
-
-/* TOAST */
-#toast-stack{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:9999}
-.toast{padding:12px 18px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:13px;font-weight:600;box-shadow:var(--shadow-lg);animation:slideIn .3s ease}
-@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
-
-/* ════════════════════════════════════════════════ */
-/* ═══════ RPG JUICY ICON STYLE OVERRIDE ═══════════ */
-/* ════════════════════════════════════════════════ */
-
-/* Sonuç ikonlarına RPG efekt */
-.result-card svg, #preview-svg svg {
-  filter: 
-    drop-shadow(0 -1.5px 0 rgba(255,255,255,0.6))
-    drop-shadow(0 2px 0 rgba(0,0,0,0.5))
-    drop-shadow(0 4px 8px rgba(0,0,0,0.55))
-    saturate(1.7)
-    contrast(1.2) !important;
-  transition: transform .25s cubic-bezier(.34,1.56,.64,1);
-}
-.result-card:hover svg {
-  transform: scale(1.15) rotate(-4deg);
-}
-
-/* Sonuç kartları kabarık 3D */
-.result-card {
-  background: linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.08),
-    inset 0 -4px 8px rgba(0,0,0,0.4),
-    0 4px 0 rgba(0,0,0,0.4),
-    0 6px 14px rgba(0,0,0,0.45) !important;
-  border-width: 2px !important;
-  position: relative;
-  overflow: hidden;
-}
-.result-card::before {
-  content:'';
-  position:absolute;
-  top:3px; left:10%; right:10%;
-  height:35%;
-  background:linear-gradient(to bottom, rgba(255,255,255,0.18), transparent);
-  border-radius:50%;
-  filter:blur(3px);
-  pointer-events:none;
-}
-.result-card:hover {
-  transform: translateY(-3px) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.1),
-    inset 0 -4px 8px rgba(0,0,0,0.4),
-    0 6px 0 rgba(0,0,0,0.4),
-    0 12px 24px var(--glow) !important;
-}
-
-/* Stil kartları 3D RPG */
-.style-card {
-  background: linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.1),
-    inset 0 -5px 10px rgba(0,0,0,0.4),
-    0 4px 0 rgba(0,0,0,0.4),
-    0 6px 14px rgba(0,0,0,0.4) !important;
-  position:relative;
-  overflow:hidden;
-}
-.style-card::before {
-  content:'';
-  position:absolute;
-  top:2px; left:8%; right:8%;
-  height:38%;
-  background:linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
-  border-radius:50%;
-  filter:blur(3px);
-  pointer-events:none;
-}
-.style-card:hover {
-  transform: translateY(-3px) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.15),
-    inset 0 -5px 10px rgba(0,0,0,0.4),
-    0 7px 0 rgba(0,0,0,0.4),
-    0 14px 24px var(--glow) !important;
-}
-.style-card .emoji {
-  filter:
-    drop-shadow(0 -1px 0 rgba(255,255,255,0.4))
-    drop-shadow(0 2px 3px rgba(0,0,0,0.7))
-    saturate(1.5);
-}
-
-/* Search Bar Generate butonu */
-.search-bar button {
-  position:relative;
-  border:2px solid rgba(0,0,0,0.5) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.4),
-    inset 0 -4px 8px rgba(0,0,0,0.35),
-    0 4px 0 rgba(0,0,0,0.5),
-    0 6px 16px var(--glow) !important;
-  text-shadow: 0 -1px 0 rgba(0,0,0,0.5), 0 2px 3px rgba(0,0,0,0.4);
-  overflow:hidden;
-}
-.search-bar button::before {
-  content:'';
-  position:absolute;
-  top:3px; left:10%; right:10%;
-  height:40%;
-  background:linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
-  border-radius:50%;
-  filter:blur(2px);
-  pointer-events:none;
-}
-.search-bar button:hover {
-  transform: translateY(-2px) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.5),
-    inset 0 -4px 8px rgba(0,0,0,0.35),
-    0 6px 0 rgba(0,0,0,0.5),
-    0 10px 22px var(--glow) !important;
-}
-.search-bar button:active {
-  transform: translateY(2px) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.3),
-    inset 0 -2px 4px rgba(0,0,0,0.3),
-    0 2px 0 rgba(0,0,0,0.5),
-    0 3px 8px var(--glow) !important;
-}
-
-/* Brand logo kabarık */
-.brand-logo {
-  border:2px solid rgba(0,0,0,0.5);
-  box-shadow:
-    inset 0 2px 3px rgba(255,255,255,0.45),
-    inset 0 -3px 6px rgba(0,0,0,0.35),
-    0 3px 0 rgba(0,0,0,0.4),
-    0 5px 14px var(--glow) !important;
-  position:relative;
-  overflow:hidden;
-}
-.brand-logo::before {
-  content:'';
-  position:absolute;
-  top:2px; left:15%; right:15%;
-  height:40%;
-  background:linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
-  border-radius:50%;
-  filter:blur(2px);
-  pointer-events:none;
-}
-
-/* Preview box derinlik */
-.preview-box {
-  box-shadow:
-    inset 0 4px 10px rgba(0,0,0,0.4),
-    inset 0 -2px 6px rgba(255,255,255,0.05),
-    0 6px 18px rgba(0,0,0,0.4) !important;
-  border-width:2px !important;
-}
-
-/* Sol panel & sağ panel derinlik */
-.left-panel, .right-panel {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.06),
-    0 8px 20px rgba(0,0,0,0.35) !important;
-}
-
-/* Suggest chip RPG */
-.suggest-chip {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.08),
-    0 2px 0 rgba(0,0,0,0.3),
-    0 3px 6px rgba(0,0,0,0.3);
-  transition: all .15s ease;
-}
-.suggest-chip:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.15),
-    0 3px 0 rgba(0,0,0,0.3),
-    0 5px 10px var(--glow);
-}
-
-/* Toggle switch kabarık */
-.toggle-row {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.06),
-    inset 0 -2px 4px rgba(0,0,0,0.25),
-    0 2px 0 rgba(0,0,0,0.3);
-}
-.toggle-switch {
-  box-shadow:
-    inset 0 2px 4px rgba(0,0,0,0.5),
-    inset 0 -1px 2px rgba(255,255,255,0.08);
-}
-.toggle-switch::after {
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.5),
-    inset 0 1px 0 rgba(255,255,255,0.4);
-}
-
-/* Icon button kabarık */
-.icon-btn {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.06),
-    0 2px 0 rgba(0,0,0,0.3),
-    0 3px 6px rgba(0,0,0,0.3);
-}
-.icon-btn:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.1),
-    0 3px 0 rgba(0,0,0,0.3),
-    0 5px 10px var(--glow);
-}
-
-/* Hero başlık RPG ekstra glow */
-.hero h1 {
-  filter: drop-shadow(0 4px 12px rgba(245,158,11,0.4));
-}
-
-/* Renkleri canlılaştır */
-.result-card[data-color] svg,
-#preview-svg svg path,
-#preview-svg svg circle,
-#preview-svg svg rect {
-  filter: saturate(1.4) brightness(1.05);
-}
-
-/* Animasyon: ikon hafif zıplama */
-@keyframes rpgFloat {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-#preview-svg {
-  animation: rpgFloat 3s ease-in-out infinite;
-}
-
-/* Vinyet (sinematik kenar gölge) */
-body::after {
-  content:'';
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%);
-  z-index:9998;
-}
+  body {
+    background: #2a2a35;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 40px;
+    font-family: sans-serif;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .label {
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .icon {
+    width: 140px;
+    height: 140px;
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5));
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <a href="#" class="brand">
-    <div class="brand-logo"><i class="fa-solid fa-bolt"></i></div>
-    IconForge
-  </a>
-  <div class="tb-divider"></div>
-  <div class="tb-info"><i class="fa-solid fa-sparkles"></i> Stylized Icon Generator</div>
-  <div class="tb-actions">
-    <button class="icon-btn" onclick="toggleTheme()" title="Theme"><i class="fa-solid fa-moon"></i></button>
-    <button class="icon-btn" title="GitHub"><i class="fa-brands fa-github"></i></button>
+<!-- ═══════════ CARTOON STİLİ ═══════════ -->
+<div class="col">
+  <div class="label">Cartoon</div>
+
+  <!-- Cartoon Kalp -->
+  <div class="icon">
+    <svg viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="cartHeart" cx="35%" cy="30%" r="80%">
+          <stop offset="0%" stop-color="#ff8fa8"/>
+          <stop offset="50%" stop-color="#ff3b5c"/>
+          <stop offset="100%" stop-color="#c41e3a"/>
+        </radialGradient>
+        <path id="hPath" d="M100,170 C50,135 20,100 20,65 C20,40 40,25 60,25 C78,25 92,38 100,55 C108,38 122,25 140,25 C160,25 180,40 180,65 C180,100 150,135 100,170 Z"/>
+        <clipPath id="hClip"><use href="#hPath"/></clipPath>
+      </defs>
+      <use href="#hPath" fill="none" stroke="#1a1a1a" stroke-width="12" stroke-linejoin="round"/>
+      <use href="#hPath" fill="url(#cartHeart)"/>
+      <g clip-path="url(#hClip)">
+        <ellipse cx="75" cy="55" rx="40" ry="22" fill="rgba(255,255,255,0.7)" transform="rotate(-20 75 55)"/>
+        <ellipse cx="68" cy="50" rx="12" ry="6" fill="#fff" transform="rotate(-25 68 50)"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Cartoon Kılıç -->
+  <div class="icon">
+    <svg viewBox="0 0 200 200">
+      <defs>
+        <linearGradient id="cartBlade" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="50%" stop-color="#b8c5d6"/>
+          <stop offset="100%" stop-color="#5a6a82"/>
+        </linearGradient>
+        <linearGradient id="cartHandle" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#a05a2c"/>
+          <stop offset="100%" stop-color="#5e2f12"/>
+        </linearGradient>
+        <linearGradient id="cartGuard" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffd966"/>
+          <stop offset="100%" stop-color="#b8860b"/>
+        </linearGradient>
+      </defs>
+      <!-- Bıçak -->
+      <path d="M100,15 L120,130 L100,145 L80,130 Z" 
+            fill="url(#cartBlade)" stroke="#1a1a1a" stroke-width="8" stroke-linejoin="round"/>
+      <!-- Parlama -->
+      <path d="M95,30 L105,30 L102,120 L98,120 Z" fill="rgba(255,255,255,0.7)"/>
+      <!-- Koruma (guard) -->
+      <rect x="60" y="135" width="80" height="18" rx="6" 
+            fill="url(#cartGuard)" stroke="#1a1a1a" stroke-width="7" stroke-linejoin="round"/>
+      <!-- Sap -->
+      <rect x="90" y="153" width="20" height="35" 
+            fill="url(#cartHandle)" stroke="#1a1a1a" stroke-width="7" stroke-linejoin="round"/>
+    </svg>
   </div>
 </div>
 
-<div class="container">
+<!-- ═══════════ ANİME STİLİ ═══════════ -->
+<div class="col">
+  <div class="label">Anime</div>
 
-  <div class="hero">
-    <h1>Forge Icons That Pop</h1>
-    <p>Search any icon and instantly transform it with RPG-grade gloss, gradients, bevels and drop shadows.</p>
+  <!-- Anime Kalp -->
+  <div class="icon">
+    <svg viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="aniHeart" cx="40%" cy="25%" r="85%">
+          <stop offset="0%" stop-color="#ffd6e7"/>
+          <stop offset="40%" stop-color="#ff7eb8"/>
+          <stop offset="100%" stop-color="#d63384"/>
+        </radialGradient>
+        <path id="aPath" d="M100,170 C50,135 20,100 20,65 C20,40 40,25 60,25 C78,25 92,38 100,55 C108,38 122,25 140,25 C160,25 180,40 180,65 C180,100 150,135 100,170 Z"/>
+        <clipPath id="aClip"><use href="#aPath"/></clipPath>
+      </defs>
+      <use href="#aPath" fill="none" stroke="#4a1a3a" stroke-width="6" stroke-linejoin="round"/>
+      <use href="#aPath" fill="url(#aniHeart)"/>
+      <g clip-path="url(#aClip)">
+        <ellipse cx="70" cy="55" rx="35" ry="20" fill="rgba(255,255,255,0.8)" transform="rotate(-25 70 55)"/>
+        <circle cx="60" cy="48" r="8" fill="#fff"/>
+        <circle cx="130" cy="75" r="5" fill="#fff" opacity="0.7"/>
+        <circle cx="125" cy="90" r="3" fill="#fff" opacity="0.5"/>
+      </g>
+    </svg>
   </div>
 
-  <div class="search-bar" id="searchBar">
-    <i class="fa-solid fa-search search-icon"></i>
-    <input type="text" id="searchInput" placeholder="Search icons... (sword, heart, gem, coin)">
-    <button onclick="searchIcons()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate</button>
-  </div>
-
-  <div class="suggest-row">
-    <span class="suggest-chip" onclick="quickSearch('sword')">⚔️ sword</span>
-    <span class="suggest-chip" onclick="quickSearch('heart')">❤️ heart</span>
-    <span class="suggest-chip" onclick="quickSearch('gem')">💎 gem</span>
-    <span class="suggest-chip" onclick="quickSearch('coin')">🪙 coin</span>
-    <span class="suggest-chip" onclick="quickSearch('star')">⭐ star</span>
-    <span class="suggest-chip" onclick="quickSearch('shield')">🛡️ shield</span>
-    <span class="suggest-chip" onclick="quickSearch('trophy')">🏆 trophy</span>
-  </div>
-
-  <div class="workspace">
-
-    <section class="left-panel">
-      <div class="section-title">
-        <i class="fa-solid fa-grid-2"></i> Results
-        <span class="count" id="resultCount">0</span>
-      </div>
-
-      <div id="resultsContainer">
-        <div class="empty-state">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <h3>Search to begin</h3>
-          <p>Type a keyword above to find icons</p>
-        </div>
-      </div>
-
-      <div class="preview-section">
-        <div class="section-title">
-          <i class="fa-solid fa-eye"></i> Preview
-        </div>
-        <div class="preview-box" id="previewBox">
-          <div id="preview-svg">
-            <div class="empty-state" style="padding:20px">
-              <i class="fa-solid fa-image"></i>
-              <p>Select an icon</p>
-            </div>
-          </div>
-        </div>
-        <div class="bg-strip">
-          <div class="bg-tab active" onclick="setBg('default', this)" title="Default">▦</div>
-          <div class="bg-tab" onclick="setBg('white', this)" title="White">☀</div>
-          <div class="bg-tab" onclick="setBg('black', this)" title="Black">●</div>
-          <div class="bg-tab" onclick="setBg('game', this)" title="Game">🎮</div>
-          <div class="bg-tab" onclick="setBg('anime', this)" title="Anime">🌸</div>
-        </div>
-      </div>
-    </section>
-
-    <aside class="right-panel">
-      <div class="section-title"><i class="fa-solid fa-palette"></i> Style</div>
-      <div class="style-grid" id="styleGrid">
-        <div class="style-card active" data-style="roblox" onclick="setStyle('roblox')"><span class="emoji">🎮</span><span class="name">Roblox</span></div>
-        <div class="style-card" data-style="anime" onclick="setStyle('anime')"><span class="emoji">🌸</span><span class="name">Anime</span></div>
-        <div class="style-card" data-style="cyber" onclick="setStyle('cyber')"><span class="emoji">⚡</span><span class="name">Cyber</span></div>
-        <div class="style-card" data-style="cartoon" onclick="setStyle('cartoon')"><span class="emoji">🎨</span><span class="name">Cartoon</span></div>
-        <div class="style-card" data-style="fantasy" onclick="setStyle('fantasy')"><span class="emoji">🧙</span><span class="name">Fantasy</span></div>
-        <div class="style-card" data-style="minimal" onclick="setStyle('minimal')"><span class="emoji">⚪</span><span class="name">Minimal</span></div>
-      </div>
-
-      <div class="section-title"><i class="fa-solid fa-sliders"></i> Customize</div>
-      <div class="control-row">
-        <label>Color</label>
-        <input type="color" id="primaryColor" value="#ef4444" oninput="updatePreview()">
-        <span class="val" id="primaryHex">#EF4444</span>
-      </div>
-
-      <div style="margin-top:14px;">
-        <div class="toggle-row active" id="tgl-shadow" onclick="this.classList.toggle('active');updatePreview();">
-          <span>🌑 Drop Shadow</span><div class="toggle-switch"></div>
-        </div>
-        <div class="toggle-row active" id="tgl-bevel" onclick="this.classList.toggle('active');updatePreview();">
-          <span>✨ Bevel & Highlight</span><div class="toggle-switch"></div>
-        </div>
-        <div class="toggle-row active" id="tgl-gradient" onclick="this.classList.toggle('active');updatePreview();">
-          <span>🌈 Gradient Fill</span><div class="toggle-switch"></div>
-        </div>
-        <div class="toggle-row" id="tgl-glow" onclick="this.classList.toggle('active');updatePreview();">
-          <span>💡 Outer Glow</span><div class="toggle-switch"></div>
-        </div>
-        <div class="toggle-row active" id="tgl-outline" onclick="this.classList.toggle('active');updatePreview();">
-          <span>⬛ Black Outline</span><div class="toggle-switch"></div>
-        </div>
-      </div>
-
-      <button onclick="downloadPng()" style="width:100%;margin-top:20px;padding:14px;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;">
-        <i class="fa-solid fa-download"></i> Download PNG
-      </button>
-    </aside>
-
+  <!-- Anime Kılıç -->
+  <div class="icon">
+    <svg viewBox="0 0 200 200">
+      <defs>
+        <linearGradient id="aniBlade" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#e0f7ff"/>
+          <stop offset="50%" stop-color="#9ec5e8"/>
+          <stop offset="100%" stop-color="#3a5a8c"/>
+        </linearGradient>
+      </defs>
+      <path d="M100,15 L115,130 L100,140 L85,130 Z" 
+            fill="url(#aniBlade)" stroke="#1a2a4a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M98,30 L102,30 L100,125 Z" fill="#fff" opacity="0.8"/>
+      <rect x="55" y="135" width="90" height="14" rx="4" 
+            fill="#c9a04a" stroke="#1a2a4a" stroke-width="4"/>
+      <rect x="92" y="149" width="16" height="38" 
+            fill="#8b3a3a" stroke="#1a2a4a" stroke-width="4"/>
+      <circle cx="100" cy="190" r="6" fill="#ffd966" stroke="#1a2a4a" stroke-width="3"/>
+    </svg>
   </div>
 </div>
 
-<div id="toast-stack"></div>
+<!-- ═══════════ RPG STİLİ ═══════════ -->
+<div class="col">
+  <div class="label">RPG</div>
 
-<script>
-/* ═══ STATE ═══ */
-const STATE = {
-  selectedIcon: null,
-  style: 'roblox',
-  bg: 'default',
-  results: []
-};
+  <!-- RPG Kalp -->
+  <div class="icon">
+    <svg viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="rpgHeart" cx="35%" cy="30%" r="85%">
+          <stop offset="0%" stop-color="#ff5555"/>
+          <stop offset="50%" stop-color="#aa1111"/>
+          <stop offset="100%" stop-color="#440000"/>
+        </radialGradient>
+        <radialGradient id="rpgShadow" cx="50%" cy="95%" r="60%">
+          <stop offset="0%" stop-color="#000" stop-opacity="0.7"/>
+          <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+        </radialGradient>
+        <path id="rPath" d="M100,170 C50,135 20,100 20,65 C20,40 40,25 60,25 C78,25 92,38 100,55 C108,38 122,25 140,25 C160,25 180,40 180,65 C180,100 150,135 100,170 Z"/>
+        <clipPath id="rClip"><use href="#rPath"/></clipPath>
+      </defs>
+      <!-- Outline kalın -->
+      <use href="#rPath" fill="none" stroke="#0a0000" stroke-width="14" stroke-linejoin="round"/>
+      <!-- Ana dolgu -->
+      <use href="#rPath" fill="url(#rpgHeart)"/>
+      <!-- Alt iç gölge -->
+      <g clip-path="url(#rClip)">
+        <rect x="0" y="0" width="200" height="200" fill="url(#rpgShadow)"/>
+      </g>
+      <!-- Üst gloss -->
+      <g clip-path="url(#rClip)">
+        <ellipse cx="75" cy="55" rx="38" ry="22" fill="rgba(255,255,255,0.5)" transform="rotate(-20 75 55)"/>
+        <ellipse cx="68" cy="48" rx="10" ry="5" fill="#fff" opacity="0.95" transform="rotate(-25 68 48)"/>
+      </g>
+    </svg>
+  </div>
 
-/* ═══ DEMO ICON KÜTÜPHANESİ ═══ */
-const ICON_LIB = {
-  sword:   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 2L22 9.5l-9 9-2.1-2.1 2-2-5-5 2-2-2.1-2.1zM3 21l3.5-3.5 2.1 2.1L5 23z"/></svg>',
-  heart:   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-9.5-9C.8 8.5 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.2 4.5 4.5 8C19 16.5 12 21 12 21z"/></svg>',
-  gem:     '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3h12l4 6-10 12L2 9z"/></svg>',
-  coin:    '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><text x="12" y="16" font-size="10" text-anchor="middle" fill="#000" font-weight="bold">$</text></svg>',
-  star:    '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>',
-  shield:  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l9 4v6c0 5.5-3.8 10.7-9 12-5.2-1.3-9-6.5-9-12V6z"/></svg>',
-  trophy:  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4h10v3a5 5 0 01-10 0V4zm-2 0H3v3a4 4 0 004 4V9a2 2 0 01-2-2V4zm14 0h2v3a4 4 0 01-4 4V9a2 2 0 002-2V4zM10 14h4v3h3v3H7v-3h3z"/></svg>'
-};
+  <!-- RPG Kılıç -->
+  <div class="icon">
+    <svg viewBox="0 0 200 200">
+      <defs>
+        <linearGradient id="rpgBlade" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="30%" stop-color="#9ab0c8"/>
+          <stop offset="70%" stop-color="#4a5a76"/>
+          <stop offset="100%" stop-color="#1a2336"/>
+        </linearGradient>
+        <linearGradient id="rpgGold" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffe066"/>
+          <stop offset="50%" stop-color="#d4a017"/>
+          <stop offset="100%" stop-color="#7a5a0a"/>
+        </linearGradient>
+        <linearGradient id="rpgWood" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#8b4a1f"/>
+          <stop offset="100%" stop-color="#3a1a08"/>
+        </linearGradient>
+      </defs>
+      <!-- Bıçak (gölge offset) -->
+      <path d="M100,18 L122,132 L100,150 L78,132 Z" 
+            fill="url(#rpgBlade)" stroke="#000" stroke-width="9" stroke-linejoin="round"/>
+      <!-- Bıçak parlaması -->
+      <path d="M95,32 L105,32 L102,118 L98,118 Z" fill="#fff" opacity="0.85"/>
+      <path d="M88,35 L92,35 L90,100" stroke="#fff" stroke-width="2" opacity="0.5"/>
+      <!-- Altın guard -->
+      <path d="M55,135 L145,135 L150,148 L140,158 L60,158 L50,148 Z" 
+            fill="url(#rpgGold)" stroke="#000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M60,138 L140,138 L142,143 L58,143 Z" fill="#fff" opacity="0.5"/>
+      <!-- Sap -->
+      <rect x="88" y="158" width="24" height="30" rx="3"
+            fill="url(#rpgWood)" stroke="#000" stroke-width="7" stroke-linejoin="round"/>
+      <line x1="88" y1="168" x2="112" y2="168" stroke="#2a1005" stroke-width="2"/>
+      <line x1="88" y1="178" x2="112" y2="178" stroke="#2a1005" stroke-width="2"/>
+      <!-- Pommel (alt topuz) -->
+      <circle cx="100" cy="192" r="8" fill="url(#rpgGold)" stroke="#000" stroke-width="6"/>
+    </svg>
+  </div>
+</div>
 
-/* ═══ ARAMA ═══ */
-function quickSearch(term) {
-  document.getElementById('searchInput').value = term;
-  searchIcons();
-}
-
-function searchIcons() {
-  const q = document.getElementById('searchInput').value.toLowerCase().trim();
-  const container = document.getElementById('resultsContainer');
-  const count = document.getElementById('resultCount');
-
-  if (!q) {
-    container.innerHTML = '<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><h3>Search to begin</h3><p>Type a keyword</p></div>';
-    count.textContent = '0';
-    return;
-  }
-
-  container.innerHTML = '<div class="loading"><i class="fa-solid fa-spinner"></i><p>Forging...</p></div>';
-
-  setTimeout(() => {
-    const matches = Object.keys(ICON_LIB).filter(k => k.includes(q));
-    STATE.results = matches;
-    count.textContent = matches.length;
-
-    if (matches.length === 0) {
-      container.innerHTML = '<div class="empty-state"><i class="fa-solid fa-face-frown"></i><h3>No icons found</h3><p>Try: sword, heart, gem, coin, star, shield</p></div>';
-      return;
-    }
-
-    let html = '<div class="results-grid">';
-    matches.forEach(name => {
-      html += `<div class="result-card" onclick="selectIcon('${name}', this)">${ICON_LIB[name]}</div>`;
-    });
-    html += '</div>';
-    container.innerHTML = html;
-    toast(`Found ${matches.length} icon(s)`, 'success');
-  }, 400);
-}
-
-/* ═══ SEÇİM ═══ */
-function selectIcon(name, el) {
-  document.querySelectorAll('.result-card').forEach(c => c.classList.remove('selected'));
-  if (el) el.classList.add('selected');
-  STATE.selectedIcon = { name, svg: ICON_LIB[name] };
-  updatePreview();
-}
-
-/* ═══ STİL ═══ */
-function setStyle(style) {
-  STATE.style = style;
-  document.querySelectorAll('.style-card').forEach(c => c.classList.toggle('active', c.dataset.style === style));
-  updatePreview();
-}
-
-/* ═══ ARKAPLAN ═══ */
-function setBg(bg, el) {
-  STATE.bg = bg;
-  const box = document.getElementById('previewBox');
-  box.className = 'preview-box' + (bg !== 'default' ? ' bg-' + bg : '');
-  document.querySelectorAll('.bg-tab').forEach(t => t.classList.remove('active'));
-  if (el) el.classList.add('active');
-}
-
-/* ═══ ÖNİZLEME GÜNCELLE ═══ */
-function updatePreview() {
-  const box = document.getElementById('preview-svg');
-  if (!STATE.selectedIcon) {
-    box.innerHTML = '<div class="empty-state" style="padding:20px"><i class="fa-solid fa-image"></i><p>Select an icon</p></div>';
-    return;
-  }
-  const color = document.getElementById('primaryColor').value;
-  document.getElementById('primaryHex').textContent = color.toUpperCase();
-  const shadow = document.getElementById('tgl-shadow').classList.contains('active');
-  const bevel = document.getElementById('tgl-bevel').classList.contains('active');
-  const gradient = document.getElementById('tgl-gradient').classList.contains('active');
-  const glow = document.getElementById('tgl-glow').classList.contains('active');
-  const outline = document.getElementById('tgl-outline').classList.contains('active');
-
-  let filters = [];
-  if (glow)    filters.push(`drop-shadow(0 0 14px ${color})`);
-  if (shadow)  filters.push('drop-shadow(0 6px 8px rgba(0,0,0,0.6))');
-  if (bevel)   filters.push('drop-shadow(0 -1.5px 0 rgba(255,255,255,0.6))');
-  filters.push('saturate(1.6) contrast(1.15)');
-
-  const fillStyle = gradient
-    ? `background:linear-gradient(180deg, ${lighten(color,25)}, ${color}, ${darken(color,30)});-webkit-background-clip:text;background-clip:text;color:transparent;`
-    : `color:${color};`;
-  const strokeStyle = outline ? 'stroke:#000;stroke-width:1.5;paint-order:stroke;' : '';
-
-  box.innerHTML = `<div style="${fillStyle}filter:${filters.join(' ')};width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-    ${STATE.selectedIcon.svg.replace('<svg', `<svg style="${strokeStyle}"`)}
-  </div>`;
-}
-
-/* ═══ RENK YARDIMCILARI ═══ */
-function lighten(hex, pct) {
-  const n = parseInt(hex.slice(1), 16);
-  let r = (n >> 16) + pct, g = ((n >> 8) & 0xff) + pct, b = (n & 0xff) + pct;
-  r = Math.min(255, r); g = Math.min(255, g); b = Math.min(255, b);
-  return '#' + ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
-}
-function darken(hex, pct) {
-  const n = parseInt(hex.slice(1), 16);
-  let r = (n >> 16) - pct, g = ((n >> 8) & 0xff) - pct, b = (n & 0xff) - pct;
-  r = Math.max(0, r); g = Math.max(0, g); b = Math.max(0, b);
-  return '#' + ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
-}
-
-/* ═══ İNDİRME ═══ */
-function downloadPng() {
-  if (!STATE.selectedIcon) { toast('Select an icon first', 'danger'); return; }
-  const node = document.getElementById('preview-svg').querySelector('svg');
-  if (!node) return;
-  const svgData = new XMLSerializer().serializeToString(node);
-  const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const img = new Image();
-  img.onload = () => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 512; canvas.height = 512;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0, 512, 512);
-    const a = document.createElement('a');
-    a.download = STATE.selectedIcon.name + '-iconforge.png';
-    a.href = canvas.toDataURL('image/png');
-    a.click();
-    URL.revokeObjectURL(url);
-    toast('Downloaded!', 'success');
-  };
-  img.src = url;
-}
-
-/* ═══ TEMA ═══ */
-function toggleTheme() {
-  const cur = document.documentElement.getAttribute('data-theme');
-  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
-}
-
-/* ═══ TOAST ═══ */
-function toast(msg, type = 'success') {
-  const stack = document.getElementById('toast-stack');
-  const t = document.createElement('div');
-  t.className = 'toast';
-  t.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-check' : 'fa-xmark'}" style="color:var(--${type === 'success' ? 'success' : 'danger'});margin-right:8px"></i> ${msg}`;
-  stack.appendChild(t);
-  setTimeout(() => t.remove(), 2800);
-}
-
-/* ═══ EVENT ═══ */
-document.getElementById('searchInput').addEventListener('focus', () => document.getElementById('searchBar').classList.add('focused'));
-document.getElementById('searchInput').addEventListener('blur', () => document.getElementById('searchBar').classList.remove('focused'));
-document.getElementById('searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') searchIcons(); });
-</script>
 </body>
 </html>
