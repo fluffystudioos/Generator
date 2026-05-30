@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0a0b;--bg-2:#111114;--bg-3:#18181b;--hover:#1c1c20;--text:#f4f4f5;--muted:#a1a1aa;--dim:#71717a;--border:rgba(255,255,255,.08);--accent:#f59e0b;--accent-2:#ef4444;--glow:rgba(245,158,11,.25)}
+:root{--bg:#0a0a0b;--bg-2:#111114;--bg-3:#18181b;--hover:#1c1c20;--text:#f4f4f5;--muted:#a1a1aa;--dim:#71717a;--border:rgba(255,255,255,.08);--accent:#f59e0b;--glow:rgba(245,158,11,.25)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 .topbar{height:64px;background:var(--bg-2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:14px;position:sticky;top:0;z-index:100}
@@ -16,7 +16,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .hero{text-align:center;margin-bottom:30px}
 .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-1.5px;margin-bottom:8px;background:linear-gradient(135deg,#f59e0b,#ef4444,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{color:var(--muted);font-size:14px;max-width:540px;margin:0 auto}
-
 .search-bar{max-width:680px;margin:0 auto 20px;display:flex;gap:8px;background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:8px;box-shadow:0 12px 30px rgba(0,0,0,.5);position:relative}
 .search-bar i.si{position:absolute;left:24px;top:50%;transform:translateY(-50%);color:var(--dim);pointer-events:none}
 .search-bar input{flex:1;background:transparent;border:none;outline:none;padding:12px 16px 12px 38px;color:var(--text);font-size:15px;font-weight:500}
@@ -24,16 +23,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .search-bar button{padding:12px 22px;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border:none;border-radius:9px;font-weight:800;font-size:13px;cursor:pointer;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:7px;border:2px solid rgba(0,0,0,.3);box-shadow:inset 0 2px 4px rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.3),0 4px 0 rgba(0,0,0,.5),0 6px 16px var(--glow)}
 .search-bar button:hover{transform:translateY(-2px)}
 .search-bar button:active{transform:translateY(2px)}
-
 .suggest-row{max-width:780px;margin:0 auto 30px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
 .suggest-chip{padding:6px 14px;border-radius:999px;background:var(--bg-2);border:1px solid var(--border);color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}
 .suggest-chip:hover{background:var(--hover);color:var(--text);border-color:var(--accent);transform:translateY(-2px)}
-
 .workspace{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
 @media(max-width:900px){.workspace{grid-template-columns:1fr}}
 .panel{background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 8px 20px rgba(0,0,0,.35)}
 .section-title{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-
 .preview-box{background:repeating-conic-gradient(var(--bg-3) 0% 25%,var(--bg-2) 0% 50%) 50%/24px 24px;border:2px solid var(--border);border-radius:14px;padding:30px;min-height:360px;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 4px 10px rgba(0,0,0,.4)}
 .preview-box.bg-white{background:#fff}
 .preview-box.bg-black{background:#000}
@@ -46,27 +42,22 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .empty-state i{font-size:48px;display:block;margin-bottom:12px;opacity:.4}
 .empty-state h3{font-family:'Space Grotesk',sans-serif;color:var(--text);font-size:16px;margin-bottom:6px}
 .empty-state p{font-size:13px}
-
 .bg-strip{display:flex;gap:6px;justify-content:center;margin-top:14px}
 .bg-tab{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);background:var(--bg-3)}
 .bg-tab.active{border-color:var(--accent);color:var(--accent);background:var(--glow)}
-
 .style-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
 .style-card{background:linear-gradient(180deg,var(--bg-3),var(--bg-2));border:2px solid var(--border);border-radius:12px;padding:14px 6px;cursor:pointer;text-align:center;box-shadow:inset 0 2px 4px rgba(255,255,255,.08),inset 0 -4px 8px rgba(0,0,0,.35),0 4px 0 rgba(0,0,0,.4)}
 .style-card:hover{transform:translateY(-2px)}
 .style-card.active{border-color:var(--accent);background:var(--glow);box-shadow:0 0 0 2px var(--glow),0 6px 14px var(--glow)}
 .style-card .emoji{font-size:24px;display:block;margin-bottom:4px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
 .style-card .name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
-
 .control-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-size:13px}
 .control-row label{flex:1;font-weight:600;color:var(--muted)}
 .control-row input[type="color"]{width:44px;height:34px;border:none;border-radius:8px;cursor:pointer;background:transparent}
 .control-row .val{font-family:monospace;font-size:11px;color:var(--muted)}
-
 .btn-download{width:100%;margin-top:8px;padding:14px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:2px solid rgba(0,0,0,.3);border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;box-shadow:inset 0 2px 4px rgba(255,255,255,.4),inset 0 -3px 6px rgba(0,0,0,.3),0 4px 0 rgba(0,0,0,.5),0 6px 16px rgba(16,185,129,.4)}
 .btn-download:hover{transform:translateY(-2px)}
 .btn-download:active{transform:translateY(2px)}
-
 #toast-stack{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:9999}
 .toast{padding:12px 18px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;font-size:13px;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,.5);animation:slideIn .3s ease}
 @keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
@@ -84,28 +75,22 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 <div class="container">
   <div class="hero">
     <h1>Forge Icons That Pop</h1>
-    <p>Type any keyword and instantly forge a stylized RPG-grade icon with gloss, gradients, bevels and shadows.</p>
+    <p>Type any keyword and instantly forge a stylized icon — switch between Cartoon, Anime, and RPG styles.</p>
   </div>
-
   <div class="search-bar">
     <i class="fa-solid fa-search si"></i>
-    <input type="text" id="searchInput" placeholder="Type: sword, heart, gem, coin, shield, star, trophy, key, potion, skull...">
+    <input type="text" id="searchInput" placeholder="Type: heart, gem, star, shield, fire, sword...">
     <button onclick="generate()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate</button>
   </div>
-
   <div class="suggest-row">
     <span class="suggest-chip" onclick="quick('heart')">❤️ heart</span>
     <span class="suggest-chip" onclick="quick('sword')">⚔️ sword</span>
     <span class="suggest-chip" onclick="quick('gem')">💎 gem</span>
-    <span class="suggest-chip" onclick="quick('coin')">🪙 coin</span>
     <span class="suggest-chip" onclick="quick('star')">⭐ star</span>
     <span class="suggest-chip" onclick="quick('shield')">🛡️ shield</span>
-    <span class="suggest-chip" onclick="quick('trophy')">🏆 trophy</span>
-    <span class="suggest-chip" onclick="quick('key')">🗝️ key</span>
-    <span class="suggest-chip" onclick="quick('potion')">🧪 potion</span>
-    <span class="suggest-chip" onclick="quick('skull')">💀 skull</span>
-    <span class="suggest-chip" onclick="quick('crown')">👑 crown</span>
     <span class="suggest-chip" onclick="quick('fire')">🔥 fire</span>
+    <span class="suggest-chip" onclick="quick('coin')">🪙 coin</span>
+    <span class="suggest-chip" onclick="quick('crown')">👑 crown</span>
   </div>
 
   <div class="workspace">
@@ -136,14 +121,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
         <div class="style-card" data-style="anime" onclick="setStyle('anime')"><span class="emoji">🌸</span><span class="name">Anime</span></div>
         <div class="style-card active" data-style="rpg" onclick="setStyle('rpg')"><span class="emoji">⚔️</span><span class="name">RPG</span></div>
       </div>
-
       <div class="section-title"><i class="fa-solid fa-sliders"></i> Color</div>
       <div class="control-row">
         <label>Primary</label>
         <input type="color" id="primaryColor" value="#ef4444" oninput="refresh()">
         <span class="val" id="primaryHex">#EF4444</span>
       </div>
-
       <button class="btn-download" onclick="downloadPng()">
         <i class="fa-solid fa-download"></i> Download PNG
       </button>
@@ -154,66 +137,93 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 <div id="toast-stack"></div>
 
 <script>
-/* ════════════ STATE ════════════ */
 const STATE = { iconName:null, style:'rpg', bg:'default' };
 
-/* ════════════ YARDIMCI: Renk işlemleri ════════════ */
+/* ════ RENK ARAÇLARI ════ */
 function hexToRgb(h){const n=parseInt(h.slice(1),16);return[n>>16,(n>>8)&0xff,n&0xff];}
 function rgbToHex(r,g,b){return'#'+[r,g,b].map(x=>Math.max(0,Math.min(255,Math.round(x))).toString(16).padStart(2,'0')).join('');}
 function lighten(h,p){const[r,g,b]=hexToRgb(h);return rgbToHex(r+p,g+p,b+p);}
 function darken(h,p){const[r,g,b]=hexToRgb(h);return rgbToHex(r-p,g-p,b-p);}
+function saturate(h,amt){
+  const[r,g,b]=hexToRgb(h);
+  const max=Math.max(r,g,b),min=Math.min(r,g,b);
+  return rgbToHex(r+(r===max?amt:r===min?-amt/2:0),g+(g===max?amt:g===min?-amt/2:0),b+(b===max?amt:b===min?-amt/2:0));
+}
+function pastel(h){const[r,g,b]=hexToRgb(h);return rgbToHex(r+(255-r)*0.5,g+(255-g)*0.5,b+(255-b)*0.5);}
 
-/* ════════════ ŞABLON KÜTÜPHANESİ ════════════ */
-/* Her ikonun PATH'i ve özel renk modu var */
+/* ════ ŞABLON KÜTÜPHANESİ ════ */
 const TEMPLATES = {
-  heart:   { type:'simple', path:'M100,170 C50,135 20,100 20,65 C20,40 40,25 60,25 C78,25 92,38 100,55 C108,38 122,25 140,25 C160,25 180,40 180,65 C180,100 150,135 100,170 Z', defaultColor:'#ef4444' },
-  gem:     { type:'simple', path:'M100,25 L155,75 L100,180 L45,75 Z M45,75 L155,75', defaultColor:'#a855f7' },
-  star:    { type:'simple', path:'M100,20 L122,80 L185,82 L135,118 L155,180 L100,143 L45,180 L65,118 L15,82 L78,80 Z', defaultColor:'#fbbf24' },
-  shield:  { type:'simple', path:'M100,15 L175,40 L175,100 C175,140 145,170 100,185 C55,170 25,140 25,100 L25,40 Z', defaultColor:'#3b82f6' },
-  coin:    { type:'coin', defaultColor:'#fbbf24' },
-  sword:   { type:'sword', defaultColor:'#cbd5e1' },
-  trophy:  { type:'trophy', defaultColor:'#fbbf24' },
-  key:     { type:'key', defaultColor:'#fbbf24' },
-  potion:  { type:'potion', defaultColor:'#a855f7' },
-  skull:   { type:'skull', defaultColor:'#e5e7eb' },
-  crown:   { type:'crown', defaultColor:'#fbbf24' },
-  fire:    { type:'simple', path:'M100,15 C110,40 140,55 140,90 C155,75 150,55 145,45 C175,75 180,120 155,160 C145,175 125,185 100,185 C75,185 55,175 45,160 C20,120 25,75 55,45 C50,60 55,80 65,85 C60,55 80,40 90,15 C95,30 100,15 100,15 Z', defaultColor:'#ef4444' }
+  heart:  { path:'M100,170 C50,135 20,100 20,65 C20,40 40,25 60,25 C78,25 92,38 100,55 C108,38 122,25 140,25 C160,25 180,40 180,65 C180,100 150,135 100,170 Z', defaultColor:'#ef4444' },
+  gem:    { path:'M100,25 L155,75 L100,180 L45,75 Z M45,75 L155,75', defaultColor:'#a855f7' },
+  star:   { path:'M100,20 L122,80 L185,82 L135,118 L155,180 L100,143 L45,180 L65,118 L15,82 L78,80 Z', defaultColor:'#fbbf24' },
+  shield: { path:'M100,15 L175,40 L175,100 C175,140 145,170 100,185 C55,170 25,140 25,100 L25,40 Z', defaultColor:'#3b82f6' },
+  fire:   { path:'M100,15 C110,40 140,55 140,90 C155,75 150,55 145,45 C175,75 180,120 155,160 C145,175 125,185 100,185 C75,185 55,175 45,160 C20,120 25,75 55,45 C50,60 55,80 65,85 C60,55 80,40 90,15 C95,30 100,15 100,15 Z', defaultColor:'#ef4444' },
+  coin:   { path:'M100,100 m-78,0 a78,78 0 1,0 156,0 a78,78 0 1,0 -156,0 Z', defaultColor:'#fbbf24' },
+  sword:  { path:'sword', defaultColor:'#cbd5e1' },
+  crown:  { path:'M30,150 L40,70 L75,110 L100,50 L125,110 L160,70 L170,150 Z', defaultColor:'#fbbf24' }
 };
 
-/* ════════════ STİL AYARLARI ════════════ */
-const STYLES = {
-  cartoon: { outline:12, outlineColor:'#1a1a1a', glossStrength:0.7, shadowStrength:0.4, satBoost:1.2 },
-  anime:   { outline:6,  outlineColor:'#3a1a4a', glossStrength:0.85,shadowStrength:0.3, satBoost:1.0, extraSparkle:true },
-  rpg:     { outline:14, outlineColor:'#000000', glossStrength:0.55,shadowStrength:0.7, satBoost:1.4 }
-};
-
-/* ════════════ ANA FORGE MOTORU ════════════ */
+/* ═══════════════════════════════════════════ */
+/* ════════ ANA FORGE MOTORU - STİL FARKLI ══ */
+/* ═══════════════════════════════════════════ */
 function forgeIcon(name, color, styleName){
   const t = TEMPLATES[name];
   if(!t) return null;
-  const s = STYLES[styleName];
   const id = Math.random().toString(36).slice(2,8);
 
-  // Renk hesaplamaları (stil bazlı doygunluk)
-  const cBoost = styleName==='rpg' ? darken(color,10) : color;
-  const cLight = lighten(cBoost, 60);
-  const cMid   = cBoost;
-  const cDark  = darken(cBoost, 60);
-  const cDeep  = darken(cBoost, 100);
+  // Kılıç özel
+  if(name==='sword') return forgeSword(styleName, id);
 
-  // Tip bazlı render
-  if(t.type === 'simple') return renderSimple(t.path, s, id, cLight, cMid, cDark, cDeep);
-  if(t.type === 'coin')   return renderCoin(s, id, cLight, cMid, cDark, cDeep);
-  if(t.type === 'sword')  return renderSword(s, id);
-  if(t.type === 'trophy') return renderTrophy(s, id, cLight, cMid, cDark, cDeep);
-  if(t.type === 'key')    return renderKey(s, id, cLight, cMid, cDark, cDeep);
-  if(t.type === 'potion') return renderPotion(s, id, cLight, cMid, cDark, cDeep);
-  if(t.type === 'skull')  return renderSkull(s, id);
-  if(t.type === 'crown')  return renderCrown(s, id, cLight, cMid, cDark, cDeep);
-}
+  // Stil'e göre RENK paleti FARKLI
+  let cL, cM, cD, cDP, outlineColor, outlineW, glossOp, shadowOp, extraLayers='';
 
-/* ════════════ RENDER: SIMPLE (kalp, yıldız, elmas, kalkan, ateş) ════════════ */
-function renderSimple(path, s, id, cL, cM, cD, cDP){
+  if(styleName === 'cartoon'){
+    // CARTOON: Düz canlı renkler, az gradient, kalın siyah outline, basit parlama
+    cL = lighten(color, 40);
+    cM = color;
+    cD = darken(color, 30);
+    cDP = darken(color, 50);
+    outlineColor = '#1a1a1a';
+    outlineW = 13;
+    glossOp = 0.75;
+    shadowOp = 0.25;
+  }
+  else if(styleName === 'anime'){
+    // ANIME: Pastel yumuşak renkler, mor outline, çoklu parlamalar, sevimli
+    cL = pastel(lighten(color, 30));
+    cM = pastel(color);
+    cD = darken(pastel(color), 30);
+    cDP = darken(pastel(color), 60);
+    outlineColor = darken(color, 80);
+    outlineW = 5;
+    glossOp = 0.9;
+    shadowOp = 0.2;
+    extraLayers = `
+      <g>
+        <circle cx="135" cy="80" r="5" fill="#fff" opacity="0.95"/>
+        <circle cx="145" cy="100" r="3" fill="#fff" opacity="0.7"/>
+        <circle cx="130" cy="115" r="2" fill="#fff" opacity="0.6"/>
+        <circle cx="50" cy="140" r="3" fill="#fff" opacity="0.7"/>
+        <path d="M155,55 L160,50 M155,55 L150,50 M155,55 L160,60 M155,55 L150,60" stroke="#fff" stroke-width="2" opacity="0.9"/>
+      </g>`;
+  }
+  else { // rpg
+    // RPG: Koyu dramatik renkler, çok kalın siyah outline, derin gölge, metalik parlama
+    cL = saturate(lighten(color, 30), 20);
+    cM = saturate(color, 15);
+    cD = darken(color, 50);
+    cDP = darken(color, 90);
+    outlineColor = '#000000';
+    outlineW = 16;
+    glossOp = 0.5;
+    shadowOp = 0.75;
+    extraLayers = `
+      <g clip-path="url(#c${id})">
+        <rect x="0" y="120" width="200" height="80" fill="url(#deep${id})"/>
+        <path d="M30,30 Q50,20 70,30" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
+      </g>`;
+  }
+
   return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="g${id}" cx="35%" cy="30%" r="85%">
@@ -222,262 +232,175 @@ function renderSimple(path, s, id, cL, cM, cD, cDP){
         <stop offset="100%" stop-color="${cDP}"/>
       </radialGradient>
       <radialGradient id="s${id}" cx="50%" cy="95%" r="60%">
-        <stop offset="0%" stop-color="#000" stop-opacity="${s.shadowStrength}"/>
+        <stop offset="0%" stop-color="#000" stop-opacity="${shadowOp}"/>
         <stop offset="100%" stop-color="#000" stop-opacity="0"/>
       </radialGradient>
-      <path id="p${id}" d="${path}"/>
+      <linearGradient id="deep${id}" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#000" stop-opacity="0.6"/>
+      </linearGradient>
+      <path id="p${id}" d="${t.path}"/>
       <clipPath id="c${id}"><use href="#p${id}"/></clipPath>
     </defs>
-    <use href="#p${id}" fill="none" stroke="${s.outlineColor}" stroke-width="${s.outline}" stroke-linejoin="round"/>
+    <use href="#p${id}" fill="none" stroke="${outlineColor}" stroke-width="${outlineW}" stroke-linejoin="round"/>
     <use href="#p${id}" fill="url(#g${id})"/>
     <g clip-path="url(#c${id})">
       <rect x="0" y="0" width="200" height="200" fill="url(#s${id})"/>
-      <ellipse cx="75" cy="55" rx="40" ry="22" fill="rgba(255,255,255,${s.glossStrength})" transform="rotate(-20 75 55)"/>
-      <ellipse cx="68" cy="48" rx="10" ry="5" fill="#fff" opacity="0.95" transform="rotate(-25 68 48)"/>
-      ${s.extraSparkle?`<circle cx="135" cy="80" r="4" fill="#fff" opacity="0.8"/><circle cx="130" cy="95" r="2.5" fill="#fff" opacity="0.6"/>`:''}
+      <ellipse cx="75" cy="55" rx="40" ry="22" fill="rgba(255,255,255,${glossOp})" transform="rotate(-20 75 55)"/>
+      <ellipse cx="68" cy="48" rx="10" ry="5" fill="#fff" opacity="${Math.min(1,glossOp+0.2)}" transform="rotate(-25 68 48)"/>
     </g>
+    ${extraLayers}
   </svg>`;
 }
 
-/* ════════════ RENDER: COIN ════════════ */
-function renderCoin(s, id, cL, cM, cD, cDP){
-  return `<svg viewBox="0 0 200 200">
-    <defs>
-      <radialGradient id="cg${id}" cx="35%" cy="30%" r="80%">
-        <stop offset="0%" stop-color="${cL}"/>
-        <stop offset="60%" stop-color="${cM}"/>
-        <stop offset="100%" stop-color="${cDP}"/>
-      </radialGradient>
-    </defs>
-    <circle cx="100" cy="100" r="80" fill="none" stroke="${s.outlineColor}" stroke-width="${s.outline}"/>
-    <circle cx="100" cy="100" r="80" fill="url(#cg${id})"/>
-    <circle cx="100" cy="100" r="62" fill="none" stroke="${darken(cM,40)}" stroke-width="4"/>
-    <text x="100" y="125" text-anchor="middle" font-size="70" font-weight="900" font-family="Arial" fill="${cDP}" stroke="${s.outlineColor}" stroke-width="3">$</text>
-    <ellipse cx="75" cy="60" rx="30" ry="14" fill="rgba(255,255,255,${s.glossStrength})" transform="rotate(-30 75 60)"/>
-    <ellipse cx="68" cy="55" rx="8" ry="4" fill="#fff" transform="rotate(-30 68 55)"/>
-  </svg>`;
-}
-
-/* ════════════ RENDER: SWORD ════════════ */
-function renderSword(s, id){
+/* ════════ ÖZEL: KILIÇ (3 STİL FARKLI) ════════ */
+function forgeSword(styleName, id){
+  if(styleName === 'cartoon'){
+    return `<svg viewBox="0 0 200 200">
+      <defs>
+        <linearGradient id="bl${id}" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#94a3b8"/>
+          <stop offset="50%" stop-color="#f1f5f9"/>
+          <stop offset="100%" stop-color="#64748b"/>
+        </linearGradient>
+      </defs>
+      <path d="M100,18 L120,135 L100,150 L80,135 Z" fill="url(#bl${id})" stroke="#1a1a1a" stroke-width="11" stroke-linejoin="round"/>
+      <path d="M97,32 L103,32 L100,130 Z" fill="#fff" opacity="0.85"/>
+      <rect x="55" y="135" width="90" height="18" rx="5" fill="#fbbf24" stroke="#1a1a1a" stroke-width="10" stroke-linejoin="round"/>
+      <rect x="88" y="153" width="24" height="35" rx="3" fill="#92400e" stroke="#1a1a1a" stroke-width="9"/>
+      <circle cx="100" cy="192" r="9" fill="#fbbf24" stroke="#1a1a1a" stroke-width="7"/>
+    </svg>`;
+  }
+  if(styleName === 'anime'){
+    return `<svg viewBox="0 0 200 200">
+      <defs>
+        <linearGradient id="bl${id}" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#dbeafe"/>
+          <stop offset="50%" stop-color="#fff"/>
+          <stop offset="100%" stop-color="#bfdbfe"/>
+        </linearGradient>
+      </defs>
+      <path d="M100,15 L115,135 L100,148 L85,135 Z" fill="url(#bl${id})" stroke="#5b21b6" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M98,25 L102,25 L100,130 Z" fill="#fff"/>
+      <ellipse cx="100" cy="60" rx="3" ry="20" fill="#fff" opacity="0.95"/>
+      <circle cx="130" cy="50" r="3" fill="#fff" opacity="0.9"/>
+      <circle cx="135" cy="65" r="2" fill="#fff" opacity="0.8"/>
+      <path d="M125,40 L130,35 M125,40 L120,35 M125,40 L130,45 M125,40 L120,45" stroke="#fff" stroke-width="1.5" opacity="0.9"/>
+      <rect x="55" y="135" width="90" height="14" rx="4" fill="#fde68a" stroke="#5b21b6" stroke-width="4"/>
+      <rect x="92" y="149" width="16" height="38" rx="2" fill="#fda4af" stroke="#5b21b6" stroke-width="4"/>
+      <circle cx="100" cy="190" r="7" fill="#fde68a" stroke="#5b21b6" stroke-width="3"/>
+    </svg>`;
+  }
+  // RPG
   return `<svg viewBox="0 0 200 200">
     <defs>
       <linearGradient id="bl${id}" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#5a6a82"/>
+        <stop offset="0%" stop-color="#1a2336"/>
+        <stop offset="20%" stop-color="#5a6a82"/>
         <stop offset="45%" stop-color="#fff"/>
         <stop offset="55%" stop-color="#e0e8f2"/>
-        <stop offset="100%" stop-color="#2a3550"/>
+        <stop offset="80%" stop-color="#3a4660"/>
+        <stop offset="100%" stop-color="#0a0f1a"/>
       </linearGradient>
       <linearGradient id="gd${id}" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%" stop-color="#fff4a3"/>
-        <stop offset="50%" stop-color="#ffd700"/>
-        <stop offset="100%" stop-color="#5a3f0a"/>
+        <stop offset="40%" stop-color="#ffd700"/>
+        <stop offset="80%" stop-color="#b8860b"/>
+        <stop offset="100%" stop-color="#3a2a05"/>
       </linearGradient>
       <linearGradient id="wd${id}" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#3a1a08"/>
-        <stop offset="50%" stop-color="#a05a2c"/>
-        <stop offset="100%" stop-color="#2a1005"/>
+        <stop offset="0%" stop-color="#1a0a02"/>
+        <stop offset="50%" stop-color="#8b4a1f"/>
+        <stop offset="100%" stop-color="#1a0a02"/>
+      </linearGradient>
+      <linearGradient id="bs${id}" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+        <stop offset="70%" stop-color="#000" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#000" stop-opacity="0.6"/>
       </linearGradient>
       <path id="bp${id}" d="M100,18 L118,130 L100,148 L82,130 Z"/>
       <clipPath id="bc${id}"><use href="#bp${id}"/></clipPath>
     </defs>
-    <use href="#bp${id}" fill="none" stroke="${s.outlineColor}" stroke-width="${s.outline-3}" stroke-linejoin="round"/>
+    <use href="#bp${id}" fill="none" stroke="#000" stroke-width="13" stroke-linejoin="round"/>
     <use href="#bp${id}" fill="url(#bl${id})"/>
+    <g clip-path="url(#bc${id})"><rect x="0" y="0" width="200" height="200" fill="url(#bs${id})"/></g>
     <path d="M100,28 L102,135 L98,135 Z" fill="#fff" opacity="0.95"/>
-    <ellipse cx="100" cy="45" rx="6" ry="14" fill="#fff" opacity="0.8"/>
-    <path d="M50,135 Q45,128 50,128 L150,128 Q155,128 150,135 L148,148 Q145,158 135,160 L65,160 Q55,158 52,148 Z" fill="url(#gd${id})" stroke="${s.outlineColor}" stroke-width="${s.outline-4}" stroke-linejoin="round"/>
-    <ellipse cx="100" cy="132" rx="50" ry="3" fill="#fff" opacity="0.6"/>
-    <circle cx="100" cy="145" r="6" fill="#ff3355" stroke="${s.outlineColor}" stroke-width="3"/>
-    <ellipse cx="98" cy="143" rx="2" ry="1.2" fill="#fff" opacity="0.9"/>
-    <path d="M88,160 L112,160 L110,190 L90,190 Z" fill="url(#wd${id})" stroke="${s.outlineColor}" stroke-width="${s.outline-5}" stroke-linejoin="round"/>
-    <path d="M88,170 Q100,168 112,170 M88,180 Q100,178 112,180" stroke="#1a0a02" stroke-width="2" fill="none"/>
-    <circle cx="100" cy="192" r="9" fill="url(#gd${id})" stroke="${s.outlineColor}" stroke-width="${s.outline-7}"/>
-    <ellipse cx="97" cy="189" rx="3" ry="2" fill="#fff" opacity="0.85"/>
+    <ellipse cx="100" cy="50" rx="6" ry="18" fill="#fff" opacity="0.85"/>
+    <path d="M88,40 L92,40 L91,110 L89,110 Z" fill="#fff" opacity="0.45"/>
+    <path d="M50,135 Q45,128 50,128 L150,128 Q155,128 150,135 L148,148 Q145,158 135,160 L65,160 Q55,158 52,148 Z" fill="url(#gd${id})" stroke="#000" stroke-width="11" stroke-linejoin="round"/>
+    <ellipse cx="100" cy="132" rx="55" ry="3" fill="#fff" opacity="0.65"/>
+    <ellipse cx="100" cy="158" rx="50" ry="3" fill="#000" opacity="0.45"/>
+    <circle cx="100" cy="145" r="7" fill="#ff3355" stroke="#000" stroke-width="3"/>
+    <ellipse cx="98" cy="143" rx="2.5" ry="1.5" fill="#fff" opacity="0.95"/>
+    <path d="M88,160 L112,160 L110,190 L90,190 Z" fill="url(#wd${id})" stroke="#000" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M88,168 Q100,166 112,168 M88,178 Q100,176 112,178" stroke="#1a0a02" stroke-width="2.5" fill="none"/>
+    <rect x="91" y="161" width="3" height="28" fill="#fff" opacity="0.3"/>
+    <circle cx="100" cy="192" r="10" fill="url(#gd${id})" stroke="#000" stroke-width="9"/>
+    <ellipse cx="97" cy="189" rx="3" ry="2" fill="#fff" opacity="0.9"/>
   </svg>`;
 }
 
-/* ════════════ RENDER: TROPHY ════════════ */
-function renderTrophy(s, id, cL, cM, cD, cDP){
-  return `<svg viewBox="0 0 200 200">
-    <defs>
-      <linearGradient id="tg${id}" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="${cL}"/>
-        <stop offset="50%" stop-color="${cM}"/>
-        <stop offset="100%" stop-color="${cDP}"/>
-      </linearGradient>
-    </defs>
-    <path d="M55,30 L145,30 L140,90 Q135,120 100,125 Q65,120 60,90 Z" fill="url(#tg${id})" stroke="${s.outlineColor}" stroke-width="${s.outline}" stroke-linejoin="round"/>
-    <path d="M55,40 Q30,40 30,60 Q30,80 55,85" fill="none" stroke="${s.outlineColor}" stroke-width="${s.outline-3}" stroke-linejoin="round"/>
-    <path d="M145,40 Q170,40 170,60 Q170,80 145,85" fill="none" stroke="${s.outlineColor}" stroke-width="${s.outline-3}" stroke-linejoin="round"/>
-    <rect x="90" y="125" width="20" height="25" fill="url(#tg${id})" stroke="${s.outlineColor}" stroke-width="${s.outline-3}"/>
-    <ellipse cx="100" cy="160" rx="40" ry="10" fill="url(#tg${id})" stroke="${s.outlineColor}" stroke-width="${s.outline-3}"/>
-    <ellipse cx="80" cy="55" rx="15" ry="25" fill="#fff" opacity="0.45"/>
-    <ellipse cx="76" cy="50" rx="6" ry="10" fill="#fff" opacity="0.85"/>
-    <text x="100" y="85" text-anchor="middle" font-size="36" font-weight="900" fill="${cDP}">★</text>
-  </svg>`;
-}
-
-/* ════════════ RENDER: KEY ════════════ */
-function renderKey(s, id, cL, cM, cD, cDP){
-  return `<svg viewBox="0 0 200 200">
-    <defs>
-      <radialGradient id="kg${id}" cx="30%" cy="30%" r="80%">
-        <stop offset="0%" stop-color="${cL}"/>
-        <stop offset="60%" stop-color="${cM}"/>
-        <stop offset="100%" stop-color="${cDP}"/>
-      </radialGradient>
-    </defs>
-    <circle cx="60" cy="100" r="40" fill="url(#kg${id})" stroke="${s.outlineColor}" stroke-width="${s.outline}"/>
-    <circle cx="60" cy="100" r="15" fill="none" stroke="${s.outlineColor}" stroke-width="${s.outline-3}"/>
-    <rect x="95" y="92" width="80" height="16" fill="url(#kg${id})" stroke="${s.outlineColor}" stroke-width="${s.outline}" stroke-linejoin="round"/>
-    <rect x="155" y="108" width="10" height="18" fill="url(#kg${id})" stroke="${s.outlineColor}" stroke-width="${s.outline-3}"/>
-    <rect x="140" y="108" width="10" height="14" fill="url(#kg${id})" stroke="${s.outlineColor}" stroke-width="${s.outline-3}"/>
-    <ellipse cx="48" cy="80" rx="14" ry="8" fill="#fff" opacity="0.6" transform="rotate(-30 48 80)"/>
-    <ellipse cx="115" cy="88" rx="30" ry="3" fill="#fff" opacity="0.55"/>
-  </svg>`;
-}
-
-/* ════════════ RENDER: POTION ════════════ */
-function renderPotion(s, id, cL, cM, cD, cDP){
-  return `<svg viewBox="0 0 200 200">
-    <defs>
-      <linearGradient id="pg${id}" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="${cL}"/>
-        <stop offset="50%" stop-color="${cM}"/>
-        <stop offset="100%" stop-color="${cDP}"/>
-      </linearGradient>
-    </defs>
-    <path d="M70,170 Q40,160 40,120 Q40,90 75,75 L75,50 L125,50 L125,75 Q160,90 160,120 Q160,160 130,170 Z" fill="url(#pg${id})" stroke="${s.outlineColor}" stroke-width="${s.outline}" stroke-linejoin="round"/>
-    <rect x="70" y="30" width="60" height="25" rx="3" fill="#8b4a1f" stroke="${s.outlineColor}" stroke-width="${s.outline-3}"/>
-    <rect x="78" y="20" width="44" height="14" rx="2" fill="#5e2f12" stroke="${s.outlineColor}" stroke-width="${s.outline-4}"/>
-    <ellipse cx="80" cy="105" rx="20" ry="30" fill="#fff" opacity="0.5"/>
-    <ellipse cx="73" cy="95" rx="7" ry="14" fill="#fff" opacity="0.9"/>
-    <circle cx="120" cy="140" r="6" fill="#fff" opacity="0.6"/>
-    <circle cx="135" cy="120" r="4" fill="#fff" opacity="0.5"/>
-  </svg>`;
-}
-
-/* ════════════ RENDER: SKULL ════════════ */
-function renderSkull(s, id){
-  return `<svg viewBox="0 0 200 200">
-    <defs>
-      <radialGradient id="sk${id}" cx="35%" cy="30%" r="80%">
-        <stop offset="0%" stop-color="#fff"/>
-        <stop offset="60%" stop-color="#c4c8d0"/>
-        <stop offset="100%" stop-color="#5a5d68"/>
-      </radialGradient>
-    </defs>
-    <path d="M50,90 Q50,30 100,30 Q150,30 150,90 L150,130 Q150,145 135,150 L130,165 L120,165 L120,155 L110,155 L110,165 L90,165 L90,155 L80,155 L80,165 L70,165 L65,150 Q50,145 50,130 Z" fill="url(#sk${id})" stroke="${s.outlineColor}" stroke-width="${s.outline}" stroke-linejoin="round"/>
-    <ellipse cx="75" cy="100" rx="14" ry="16" fill="#000"/>
-    <ellipse cx="125" cy="100" rx="14" ry="16" fill="#000"/>
-    <circle cx="78" cy="95" r="4" fill="#ff3355"/>
-    <circle cx="128" cy="95" r="4" fill="#ff3355"/>
-    <path d="M95,130 Q100,135 105,130" fill="none" stroke="${s.outlineColor}" stroke-width="4" stroke-linecap="round"/>
-    <ellipse cx="75" cy="55" rx="20" ry="12" fill="#fff" opacity="0.55" transform="rotate(-20 75 55)"/>
-  </svg>`;
-}
-
-/* ════════════ RENDER: CROWN ════════════ */
-function renderCrown(s, id, cL, cM, cD, cDP){
-  return `<svg viewBox="0 0 200 200">
-    <defs>
-      <linearGradient id="cr${id}" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="${cL}"/>
-        <stop offset="50%" stop-color="${cM}"/>
-        <stop offset="100%" stop-color="${cDP}"/>
-      </linearGradient>
-    </defs>
-    <path d="M30,150 L40,70 L75,110 L100,50 L125,110 L160,70 L170,150 Z" fill="url(#cr${id})" stroke="${s.outlineColor}" stroke-width="${s.outline}" stroke-linejoin="round"/>
-    <rect x="30" y="150" width="140" height="20" fill="url(#cr${id})" stroke="${s.outlineColor}" stroke-width="${s.outline}" stroke-linejoin="round"/>
-    <circle cx="100" cy="50" r="8" fill="#ff3355" stroke="${s.outlineColor}" stroke-width="3"/>
-    <circle cx="40" cy="70" r="6" fill="#3366ff" stroke="${s.outlineColor}" stroke-width="3"/>
-    <circle cx="160" cy="70" r="6" fill="#33dd55" stroke="${s.outlineColor}" stroke-width="3"/>
-    <circle cx="60" cy="160" r="5" fill="#ff3355" stroke="${s.outlineColor}" stroke-width="2"/>
-    <circle cx="100" cy="160" r="5" fill="#33dd55" stroke="${s.outlineColor}" stroke-width="2"/>
-    <circle cx="140" cy="160" r="5" fill="#3366ff" stroke="${s.outlineColor}" stroke-width="2"/>
-    <path d="M45,80 L55,130" stroke="#fff" stroke-width="3" opacity="0.6"/>
-    <ellipse cx="100" cy="155" rx="50" ry="3" fill="#fff" opacity="0.5"/>
-  </svg>`;
-}
-
-/* ════════════ UI FONKSİYONLARI ════════════ */
-function quick(name){
-  document.getElementById('searchInput').value = name;
-  generate();
-}
-
+/* ════ UI ════ */
+function quick(name){document.getElementById('searchInput').value=name;generate();}
 function generate(){
-  const name = document.getElementById('searchInput').value.toLowerCase().trim();
-  if(!name){ toast('Type a keyword first!','danger'); return; }
-  if(!TEMPLATES[name]){
-    toast(`"${name}" not in library. Try: ${Object.keys(TEMPLATES).join(', ')}`,'danger');
-    return;
-  }
-  STATE.iconName = name;
-  // Renk varsayılanını şablona göre güncelle
-  document.getElementById('primaryColor').value = TEMPLATES[name].defaultColor;
-  document.getElementById('primaryHex').textContent = TEMPLATES[name].defaultColor.toUpperCase();
+  const name=document.getElementById('searchInput').value.toLowerCase().trim();
+  if(!name){toast('Type a keyword!','danger');return;}
+  if(!TEMPLATES[name]){toast(`Not found. Try: ${Object.keys(TEMPLATES).join(', ')}`,'danger');return;}
+  STATE.iconName=name;
+  document.getElementById('primaryColor').value=TEMPLATES[name].defaultColor;
+  document.getElementById('primaryHex').textContent=TEMPLATES[name].defaultColor.toUpperCase();
   refresh();
   toast(`Forged: ${name}`,'success');
 }
-
 function refresh(){
-  if(!STATE.iconName) return;
-  const color = document.getElementById('primaryColor').value;
-  document.getElementById('primaryHex').textContent = color.toUpperCase();
-  const svg = forgeIcon(STATE.iconName, color, STATE.style);
-  if(svg) document.getElementById('previewIcon').innerHTML = svg;
+  if(!STATE.iconName)return;
+  const color=document.getElementById('primaryColor').value;
+  document.getElementById('primaryHex').textContent=color.toUpperCase();
+  const svg=forgeIcon(STATE.iconName,color,STATE.style);
+  if(svg)document.getElementById('previewIcon').innerHTML=svg;
 }
-
 function setStyle(st){
-  STATE.style = st;
+  STATE.style=st;
   document.querySelectorAll('.style-card').forEach(c=>c.classList.toggle('active',c.dataset.style===st));
   refresh();
 }
-
-function setBg(bg, el){
-  STATE.bg = bg;
-  const box = document.getElementById('previewBox');
-  box.className = 'preview-box' + (bg!=='default' ? ' bg-'+bg : '');
+function setBg(bg,el){
+  STATE.bg=bg;
+  const box=document.getElementById('previewBox');
+  box.className='preview-box'+(bg!=='default'?' bg-'+bg:'');
   document.querySelectorAll('.bg-tab').forEach(t=>t.classList.remove('active'));
-  if(el) el.classList.add('active');
+  if(el)el.classList.add('active');
 }
-
 function downloadPng(){
-  if(!STATE.iconName){ toast('Generate an icon first!','danger'); return; }
-  const svgEl = document.getElementById('previewIcon').querySelector('svg');
-  if(!svgEl) return;
-  const svgData = new XMLSerializer().serializeToString(svgEl);
-  const blob = new Blob([svgData],{type:'image/svg+xml;charset=utf-8'});
-  const url = URL.createObjectURL(blob);
-  const img = new Image();
-  img.onload = ()=>{
-    const canvas = document.createElement('canvas');
-    canvas.width = 1024; canvas.height = 1024;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(img,0,0,1024,1024);
-    const a = document.createElement('a');
-    a.download = `${STATE.iconName}-${STATE.style}-iconforge.png`;
-    a.href = canvas.toDataURL('image/png');
+  if(!STATE.iconName){toast('Generate first!','danger');return;}
+  const svgEl=document.getElementById('previewIcon').querySelector('svg');
+  if(!svgEl)return;
+  const svgData=new XMLSerializer().serializeToString(svgEl);
+  const blob=new Blob([svgData],{type:'image/svg+xml;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const img=new Image();
+  img.onload=()=>{
+    const canvas=document.createElement('canvas');
+    canvas.width=1024;canvas.height=1024;
+    canvas.getContext('2d').drawImage(img,0,0,1024,1024);
+    const a=document.createElement('a');
+    a.download=`${STATE.iconName}-${STATE.style}.png`;
+    a.href=canvas.toDataURL('image/png');
     a.click();
     URL.revokeObjectURL(url);
     toast('Downloaded!','success');
   };
-  img.src = url;
+  img.src=url;
 }
-
 function toast(msg,type='success'){
-  const stack = document.getElementById('toast-stack');
-  const t = document.createElement('div');
+  const stack=document.getElementById('toast-stack');
+  const t=document.createElement('div');
   t.className='toast';
-  t.innerHTML = `<i class="fa-solid ${type==='success'?'fa-check':'fa-xmark'}" style="color:${type==='success'?'#34d399':'#f87171'};margin-right:8px"></i>${msg}`;
+  t.innerHTML=`<i class="fa-solid ${type==='success'?'fa-check':'fa-xmark'}" style="color:${type==='success'?'#34d399':'#f87171'};margin-right:8px"></i>${msg}`;
   stack.appendChild(t);
   setTimeout(()=>t.remove(),2800);
 }
-
-document.getElementById('searchInput').addEventListener('keydown',e=>{
-  if(e.key==='Enter') generate();
-});
+document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')generate();});
 </script>
 </body>
 </html>
