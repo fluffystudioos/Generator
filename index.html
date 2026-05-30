@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* ===== ORİJİNAL DEĞİŞKENLER ===== */
 :root[data-theme="dark"]{--bg:#0a0a0b;--bg-2:#111114;--bg-3:#18181b;--hover:#1c1c20;--text:#f4f4f5;--text-2:#d4d4d8;--muted:#a1a1aa;--dim:#71717a;--border:rgba(255,255,255,.08);--border-s:rgba(255,255,255,.16);--accent:#f59e0b;--accent-2:#ef4444;--glow:rgba(245,158,11,.2);--success:#34d399;--danger:#f87171;--shadow:0 4px 12px rgba(0,0,0,.4);--shadow-lg:0 12px 30px rgba(0,0,0,.5)}
 :root[data-theme="light"]{--bg:#fafafa;--bg-2:#fff;--bg-3:#f3f4f6;--hover:#f9fafb;--text:#111827;--text-2:#374151;--muted:#6b7280;--dim:#9ca3af;--border:#e5e7eb;--border-s:#d1d5db;--accent:#f59e0b;--accent-2:#ef4444;--glow:rgba(245,158,11,.15);--success:#10b981;--danger:#ef4444;--shadow:0 4px 12px rgba(0,0,0,.08);--shadow-lg:0 12px 30px rgba(0,0,0,.12)}
 *{margin:0;padding:0;box-sizing:border-box}html{background:var(--bg)}
@@ -23,7 +24,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .icon-btn:hover{background:var(--hover);color:var(--text);border-color:var(--border-s)}
 
 .container{max-width:1400px;margin:0 auto;padding:30px 24px}
-
 .hero{text-align:center;margin-bottom:30px}
 .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-1.5px;margin-bottom:8px;background:linear-gradient(135deg,#f59e0b,#ef4444,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{color:var(--muted);font-size:14px;max-width:540px;margin:0 auto;line-height:1.6}
@@ -42,7 +42,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .suggest-chip:hover{background:var(--hover);color:var(--text);border-color:var(--accent)}
 
 .workspace{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
-
 .left-panel{background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:20px;min-height:400px}
 .section-title{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .section-title .count{margin-left:auto;font-family:'JetBrains Mono',monospace;color:var(--dim)}
@@ -71,122 +70,356 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .empty-state i{font-size:48px;margin-bottom:14px;display:block;opacity:.4}
 .empty-state h3{font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--text-2);margin-bottom:6px}
 .empty-state p{font-size:13px}
-
 .loading{padding:40px;text-align:center;color:var(--muted)}
 .loading i{font-size:24px;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* SAĞ PANEL */
 .right-panel{background:var(--bg-2);border:1px solid var(--border);border-radius:16px;padding:20px;position:sticky;top:88px}
-.style-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:20px}
-.style-card{padding:14px 10px;border:1px solid var(--border);background:var(--bg-3);border-radius:10px;cursor:pointer;text-align:center;transition:all .15s;font-size:11px;font-weight:700;color:var(--text-2)}
-.style-card:hover{border-color:var(--accent);background:var(--hover)}
-.style-card.active{border-color:var(--accent);background:var(--glow);color:var(--accent);box-shadow:0 0 0 2px var(--glow)}
-.style-card .emoji{display:block;font-size:24px;margin-bottom:5px}
-.style-card .name{display:block;letter-spacing:.5px}
+.style-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+.style-card{background:var(--bg-3);border:2px solid var(--border);border-radius:10px;padding:12px 8px;cursor:pointer;text-align:center;transition:all .15s}
+.style-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.style-card.active{border-color:var(--accent);background:var(--glow);box-shadow:0 0 0 2px var(--glow)}
+.style-card .emoji{font-size:22px;display:block;margin-bottom:4px}
+.style-card .name{font-size:11px;font-weight:700;color:var(--text)}
+.control-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;color:var(--text-2)}
+.control-row label{flex:1;font-weight:600}
+.control-row input[type="color"]{width:40px;height:32px;border:none;border-radius:8px;cursor:pointer;background:transparent}
+.control-row .val{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg-3);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text-2);margin-bottom:8px;transition:all .15s}
+.toggle-row:hover{background:var(--hover)}
+.toggle-row.active{border-color:var(--accent);color:var(--text)}
+.toggle-switch{width:36px;height:20px;border-radius:999px;background:var(--bg);position:relative;transition:all .2s}
+.toggle-switch::after{content:'';position:absolute;width:14px;height:14px;border-radius:50%;background:var(--muted);top:3px;left:3px;transition:all .2s}
+.toggle-row.active .toggle-switch{background:linear-gradient(135deg,#f59e0b,#ef4444)}
+.toggle-row.active .toggle-switch::after{left:19px;background:#fff}
 
-.control-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.control-row label{font-size:11px;font-weight:600;color:var(--muted);min-width:55px;text-transform:uppercase;letter-spacing:.5px}
-.control-row input[type="color"]{width:36px;height:30px;border:1px solid var(--border);border-radius:7px;cursor:pointer;background:transparent;padding:0}
-.control-row input[type="range"]{flex:1;-webkit-appearance:none;height:5px;background:var(--bg-3);border-radius:3px;outline:none;cursor:pointer}
-.control-row input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--bg-2)}
-.control-row .val{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-2);min-width:38px;text-align:right;font-weight:600}
+/* TOAST */
+#toast-stack{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:9999}
+.toast{padding:12px 18px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:13px;font-weight:600;box-shadow:var(--shadow-lg);animation:slideIn .3s ease}
+@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
 
-.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--bg-3);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;cursor:pointer;font-size:12px;font-weight:600;transition:all .15s}
-.toggle-row:hover{border-color:var(--accent)}
-.toggle-row.active{background:var(--glow);border-color:var(--accent);color:var(--accent)}
-.toggle-switch{width:30px;height:17px;background:var(--bg-3);border-radius:999px;position:relative;transition:all .15s;border:1px solid var(--border)}
-.toggle-row.active .toggle-switch{background:var(--accent);border-color:var(--accent)}
-.toggle-switch::after{content:'';position:absolute;width:11px;height:11px;border-radius:50%;background:var(--muted);top:2px;left:2px;transition:all .15s}
-.toggle-row.active .toggle-switch::after{background:#fff;left:15px}
+/* ════════════════════════════════════════════════ */
+/* ═══════ RPG JUICY ICON STYLE OVERRIDE ═══════════ */
+/* ════════════════════════════════════════════════ */
 
-.action-btn{width:100%;padding:13px;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;text-transform:uppercase;letter-spacing:.8px;transition:all .15s}
-.action-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px var(--glow)}
-.action-btn.secondary{background:var(--bg-3);color:var(--text);border:1px solid var(--border)}
-.action-btn.secondary:hover{background:var(--hover)}
+/* Sonuç ikonlarına RPG efekt */
+.result-card svg, #preview-svg svg {
+  filter: 
+    drop-shadow(0 -1.5px 0 rgba(255,255,255,0.6))
+    drop-shadow(0 2px 0 rgba(0,0,0,0.5))
+    drop-shadow(0 4px 8px rgba(0,0,0,0.55))
+    saturate(1.7)
+    contrast(1.2) !important;
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+}
+.result-card:hover svg {
+  transform: scale(1.15) rotate(-4deg);
+}
 
-.tab-strip{display:flex;gap:4px;background:var(--bg-3);padding:3px;border-radius:8px;border:1px solid var(--border);margin-bottom:14px}
-.tab-btn{flex:1;padding:7px;background:transparent;border:none;color:var(--muted);font-size:11px;font-weight:600;cursor:pointer;border-radius:5px;transition:all .15s}
-.tab-btn.active{background:var(--bg-2);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.2)}
+/* Sonuç kartları kabarık 3D */
+.result-card {
+  background: linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.08),
+    inset 0 -4px 8px rgba(0,0,0,0.4),
+    0 4px 0 rgba(0,0,0,0.4),
+    0 6px 14px rgba(0,0,0,0.45) !important;
+  border-width: 2px !important;
+  position: relative;
+  overflow: hidden;
+}
+.result-card::before {
+  content:'';
+  position:absolute;
+  top:3px; left:10%; right:10%;
+  height:35%;
+  background:linear-gradient(to bottom, rgba(255,255,255,0.18), transparent);
+  border-radius:50%;
+  filter:blur(3px);
+  pointer-events:none;
+}
+.result-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.1),
+    inset 0 -4px 8px rgba(0,0,0,0.4),
+    0 6px 0 rgba(0,0,0,0.4),
+    0 12px 24px var(--glow) !important;
+}
 
-.toast-stack{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column-reverse;gap:8px;z-index:9999;pointer-events:none}
-.toast{background:var(--bg-2);border:1px solid var(--border);box-shadow:var(--shadow-lg);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;animation:slideIn .3s ease,fadeOut .3s 2s ease forwards;pointer-events:all}
-@keyframes slideIn{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
-@keyframes fadeOut{to{opacity:0;transform:translateX(20px)}}
+/* Stil kartları 3D RPG */
+.style-card {
+  background: linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.1),
+    inset 0 -5px 10px rgba(0,0,0,0.4),
+    0 4px 0 rgba(0,0,0,0.4),
+    0 6px 14px rgba(0,0,0,0.4) !important;
+  position:relative;
+  overflow:hidden;
+}
+.style-card::before {
+  content:'';
+  position:absolute;
+  top:2px; left:8%; right:8%;
+  height:38%;
+  background:linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+  border-radius:50%;
+  filter:blur(3px);
+  pointer-events:none;
+}
+.style-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.15),
+    inset 0 -5px 10px rgba(0,0,0,0.4),
+    0 7px 0 rgba(0,0,0,0.4),
+    0 14px 24px var(--glow) !important;
+}
+.style-card .emoji {
+  filter:
+    drop-shadow(0 -1px 0 rgba(255,255,255,0.4))
+    drop-shadow(0 2px 3px rgba(0,0,0,0.7))
+    saturate(1.5);
+}
 
-@media(max-width:900px){.workspace{grid-template-columns:1fr}.right-panel{position:relative;top:0}}
+/* Search Bar Generate butonu */
+.search-bar button {
+  position:relative;
+  border:2px solid rgba(0,0,0,0.5) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.4),
+    inset 0 -4px 8px rgba(0,0,0,0.35),
+    0 4px 0 rgba(0,0,0,0.5),
+    0 6px 16px var(--glow) !important;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.5), 0 2px 3px rgba(0,0,0,0.4);
+  overflow:hidden;
+}
+.search-bar button::before {
+  content:'';
+  position:absolute;
+  top:3px; left:10%; right:10%;
+  height:40%;
+  background:linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  border-radius:50%;
+  filter:blur(2px);
+  pointer-events:none;
+}
+.search-bar button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.5),
+    inset 0 -4px 8px rgba(0,0,0,0.35),
+    0 6px 0 rgba(0,0,0,0.5),
+    0 10px 22px var(--glow) !important;
+}
+.search-bar button:active {
+  transform: translateY(2px) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.3),
+    inset 0 -2px 4px rgba(0,0,0,0.3),
+    0 2px 0 rgba(0,0,0,0.5),
+    0 3px 8px var(--glow) !important;
+}
+
+/* Brand logo kabarık */
+.brand-logo {
+  border:2px solid rgba(0,0,0,0.5);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,0.45),
+    inset 0 -3px 6px rgba(0,0,0,0.35),
+    0 3px 0 rgba(0,0,0,0.4),
+    0 5px 14px var(--glow) !important;
+  position:relative;
+  overflow:hidden;
+}
+.brand-logo::before {
+  content:'';
+  position:absolute;
+  top:2px; left:15%; right:15%;
+  height:40%;
+  background:linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+  border-radius:50%;
+  filter:blur(2px);
+  pointer-events:none;
+}
+
+/* Preview box derinlik */
+.preview-box {
+  box-shadow:
+    inset 0 4px 10px rgba(0,0,0,0.4),
+    inset 0 -2px 6px rgba(255,255,255,0.05),
+    0 6px 18px rgba(0,0,0,0.4) !important;
+  border-width:2px !important;
+}
+
+/* Sol panel & sağ panel derinlik */
+.left-panel, .right-panel {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 8px 20px rgba(0,0,0,0.35) !important;
+}
+
+/* Suggest chip RPG */
+.suggest-chip {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 2px 0 rgba(0,0,0,0.3),
+    0 3px 6px rgba(0,0,0,0.3);
+  transition: all .15s ease;
+}
+.suggest-chip:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    0 3px 0 rgba(0,0,0,0.3),
+    0 5px 10px var(--glow);
+}
+
+/* Toggle switch kabarık */
+.toggle-row {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    inset 0 -2px 4px rgba(0,0,0,0.25),
+    0 2px 0 rgba(0,0,0,0.3);
+}
+.toggle-switch {
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.5),
+    inset 0 -1px 2px rgba(255,255,255,0.08);
+}
+.toggle-switch::after {
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+/* Icon button kabarık */
+.icon-btn {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 2px 0 rgba(0,0,0,0.3),
+    0 3px 6px rgba(0,0,0,0.3);
+}
+.icon-btn:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 3px 0 rgba(0,0,0,0.3),
+    0 5px 10px var(--glow);
+}
+
+/* Hero başlık RPG ekstra glow */
+.hero h1 {
+  filter: drop-shadow(0 4px 12px rgba(245,158,11,0.4));
+}
+
+/* Renkleri canlılaştır */
+.result-card[data-color] svg,
+#preview-svg svg path,
+#preview-svg svg circle,
+#preview-svg svg rect {
+  filter: saturate(1.4) brightness(1.05);
+}
+
+/* Animasyon: ikon hafif zıplama */
+@keyframes rpgFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+#preview-svg {
+  animation: rpgFloat 3s ease-in-out infinite;
+}
+
+/* Vinyet (sinematik kenar gölge) */
+body::after {
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%);
+  z-index:9998;
+}
 </style>
 </head>
 <body>
 
-<header class="topbar">
+<div class="topbar">
   <a href="#" class="brand">
     <div class="brand-logo"><i class="fa-solid fa-bolt"></i></div>
-    <span>IconForge</span>
+    IconForge
   </a>
   <div class="tb-divider"></div>
-  <span class="tb-info"><i class="fa-solid fa-sparkles"></i> 200K+ Icons · Stylized</span>
+  <div class="tb-info"><i class="fa-solid fa-sparkles"></i> Stylized Icon Generator</div>
   <div class="tb-actions">
-    <button class="icon-btn" onclick="toggleTheme()" title="Theme"><i class="fa-regular fa-moon" id="themeIcon"></i></button>
+    <button class="icon-btn" onclick="toggleTheme()" title="Theme"><i class="fa-solid fa-moon"></i></button>
+    <button class="icon-btn" title="GitHub"><i class="fa-brands fa-github"></i></button>
   </div>
-</header>
+</div>
 
 <div class="container">
 
   <div class="hero">
-    <h1>Generate Game Icons</h1>
-    <p>Type what you want, pick a style, and download in seconds. Roblox, Anime, Cyber, and more.</p>
+    <h1>Forge Icons That Pop</h1>
+    <p>Search any icon and instantly transform it with RPG-grade gloss, gradients, bevels and drop shadows.</p>
   </div>
 
   <div class="search-bar" id="searchBar">
-    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-    <input type="text" id="searchInput" placeholder="Try: dragon, sword, heart, crown..." onkeydown="if(event.key==='Enter')doSearch()">
-    <button onclick="doSearch()" id="searchBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate</button>
+    <i class="fa-solid fa-search search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search icons... (sword, heart, gem, coin)">
+    <button onclick="searchIcons()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate</button>
   </div>
 
   <div class="suggest-row">
-    <button class="suggest-chip" onclick="quickSearch('dragon')">🐉 dragon</button>
-    <button class="suggest-chip" onclick="quickSearch('sword')">⚔️ sword</button>
-    <button class="suggest-chip" onclick="quickSearch('heart')">❤️ heart</button>
-    <button class="suggest-chip" onclick="quickSearch('crown')">👑 crown</button>
-    <button class="suggest-chip" onclick="quickSearch('shield')">🛡️ shield</button>
-    <button class="suggest-chip" onclick="quickSearch('coin')">💰 coin</button>
-    <button class="suggest-chip" onclick="quickSearch('gem')">💎 gem</button>
-    <button class="suggest-chip" onclick="quickSearch('fire')">🔥 fire</button>
-    <button class="suggest-chip" onclick="quickSearch('star')">⭐ star</button>
-    <button class="suggest-chip" onclick="quickSearch('skull')">💀 skull</button>
-    <button class="suggest-chip" onclick="quickSearch('chest')">📦 chest</button>
-    <button class="suggest-chip" onclick="quickSearch('potion')">🧪 potion</button>
+    <span class="suggest-chip" onclick="quickSearch('sword')">⚔️ sword</span>
+    <span class="suggest-chip" onclick="quickSearch('heart')">❤️ heart</span>
+    <span class="suggest-chip" onclick="quickSearch('gem')">💎 gem</span>
+    <span class="suggest-chip" onclick="quickSearch('coin')">🪙 coin</span>
+    <span class="suggest-chip" onclick="quickSearch('star')">⭐ star</span>
+    <span class="suggest-chip" onclick="quickSearch('shield')">🛡️ shield</span>
+    <span class="suggest-chip" onclick="quickSearch('trophy')">🏆 trophy</span>
   </div>
 
   <div class="workspace">
 
-    <div class="left-panel">
-      <div class="section-title"><i class="fa-solid fa-grid-2"></i> Search Results <span class="count" id="resultCount">—</span></div>
-      <div class="results-grid" id="resultsGrid">
-        <div class="empty-state" style="grid-column:1/-1;">
+    <section class="left-panel">
+      <div class="section-title">
+        <i class="fa-solid fa-grid-2"></i> Results
+        <span class="count" id="resultCount">0</span>
+      </div>
+
+      <div id="resultsContainer">
+        <div class="empty-state">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <h3>Start by searching</h3>
-          <p>Type any icon name above (in English)</p>
+          <h3>Search to begin</h3>
+          <p>Type a keyword above to find icons</p>
         </div>
       </div>
 
-      <div class="preview-section" id="previewSection" style="display:none;">
-        <div class="section-title"><i class="fa-solid fa-eye"></i> Styled Preview</div>
+      <div class="preview-section">
+        <div class="section-title">
+          <i class="fa-solid fa-eye"></i> Preview
+        </div>
         <div class="preview-box" id="previewBox">
-          <div id="preview-svg"></div>
+          <div id="preview-svg">
+            <div class="empty-state" style="padding:20px">
+              <i class="fa-solid fa-image"></i>
+              <p>Select an icon</p>
+            </div>
+          </div>
         </div>
         <div class="bg-strip">
-          <button class="bg-tab active" data-bg="checker" title="Checker"><i class="fa-solid fa-chess-board"></i></button>
-          <button class="bg-tab" data-bg="white" title="White"><i class="fa-regular fa-sun"></i></button>
-          <button class="bg-tab" data-bg="black" title="Black"><i class="fa-solid fa-moon"></i></button>
-          <button class="bg-tab" data-bg="game" title="Game"><i class="fa-solid fa-gamepad"></i></button>
-          <button class="bg-tab" data-bg="anime" title="Anime"><i class="fa-solid fa-star"></i></button>
+          <div class="bg-tab active" onclick="setBg('default', this)" title="Default">▦</div>
+          <div class="bg-tab" onclick="setBg('white', this)" title="White">☀</div>
+          <div class="bg-tab" onclick="setBg('black', this)" title="Black">●</div>
+          <div class="bg-tab" onclick="setBg('game', this)" title="Game">🎮</div>
+          <div class="bg-tab" onclick="setBg('anime', this)" title="Anime">🌸</div>
         </div>
       </div>
-    </div>
+    </section>
 
     <aside class="right-panel">
-
       <div class="section-title"><i class="fa-solid fa-palette"></i> Style</div>
       <div class="style-grid" id="styleGrid">
         <div class="style-card active" data-style="roblox" onclick="setStyle('roblox')"><span class="emoji">🎮</span><span class="name">Roblox</span></div>
@@ -201,356 +434,209 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
       <div class="control-row">
         <label>Color</label>
         <input type="color" id="primaryColor" value="#ef4444" oninput="updatePreview()">
-        <span class="val" id="primaryHex" style="text-align:left;">#EF4444</span>
-      </div>
-      <div class="control-row">
-        <label>Size</label>
-        <input type="range" id="iconSize" min="80" max="280" value="200" oninput="document.getElementById('size-val').textContent=this.value+'px';document.getElementById('preview-svg').style.width=this.value+'px';document.getElementById('preview-svg').style.height=this.value+'px';">
-        <span class="val" id="size-val">200px</span>
-      </div>
-      <div class="control-row">
-        <label>Outline</label>
-        <input type="range" id="outlineWidth" min="0" max="12" value="5" oninput="document.getElementById('outline-val').textContent=this.value+'px';updatePreview();">
-        <span class="val" id="outline-val">5px</span>
-      </div>
-      <div class="control-row">
-        <label>Glow</label>
-        <input type="range" id="glowAmount" min="0" max="20" value="0" oninput="document.getElementById('glow-val').textContent=this.value+'px';updatePreview();">
-        <span class="val" id="glow-val">0px</span>
+        <span class="val" id="primaryHex">#EF4444</span>
       </div>
 
       <div style="margin-top:14px;">
-        <div class="toggle-row" id="tgl-shadow" onclick="this.classList.toggle('active');updatePreview();">
+        <div class="toggle-row active" id="tgl-shadow" onclick="this.classList.toggle('active');updatePreview();">
           <span>🌑 Drop Shadow</span><div class="toggle-switch"></div>
         </div>
-        <div class="toggle-row active" id="tgl-highlight" onclick="this.classList.toggle('active');updatePreview();">
-          <span>💫 Highlight</span><div class="toggle-switch"></div>
+        <div class="toggle-row active" id="tgl-bevel" onclick="this.classList.toggle('active');updatePreview();">
+          <span>✨ Bevel & Highlight</span><div class="toggle-switch"></div>
         </div>
-        <div class="toggle-row" id="tgl-gradient" onclick="this.classList.toggle('active');updatePreview();">
-          <span>🎨 Gradient Fill</span><div class="toggle-switch"></div>
+        <div class="toggle-row active" id="tgl-gradient" onclick="this.classList.toggle('active');updatePreview();">
+          <span>🌈 Gradient Fill</span><div class="toggle-switch"></div>
+        </div>
+        <div class="toggle-row" id="tgl-glow" onclick="this.classList.toggle('active');updatePreview();">
+          <span>💡 Outer Glow</span><div class="toggle-switch"></div>
+        </div>
+        <div class="toggle-row active" id="tgl-outline" onclick="this.classList.toggle('active');updatePreview();">
+          <span>⬛ Black Outline</span><div class="toggle-switch"></div>
         </div>
       </div>
 
-      <button class="action-btn" onclick="copySvg()"><i class="fa-solid fa-code"></i> Copy SVG</button>
-      <button class="action-btn secondary" onclick="downloadSvg()"><i class="fa-solid fa-download"></i> Download SVG</button>
-      <button class="action-btn secondary" onclick="downloadPng()"><i class="fa-solid fa-image"></i> Download PNG</button>
-
+      <button onclick="downloadPng()" style="width:100%;margin-top:20px;padding:14px;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;">
+        <i class="fa-solid fa-download"></i> Download PNG
+      </button>
     </aside>
-  </div>
 
+  </div>
 </div>
 
-<div class="toast-stack" id="toast-stack"></div>
+<div id="toast-stack"></div>
 
 <script>
+/* ═══ STATE ═══ */
 const STATE = {
-  currentStyle: 'roblox',
-  selectedIcon: null,        // {prefix, name, body}
-  searchResults: [],
-  primaryColor: '#ef4444',
-  bg: 'checker'
+  selectedIcon: null,
+  style: 'roblox',
+  bg: 'default',
+  results: []
 };
 
-/* ═══ THEME ═══ */
-function toggleTheme(){
-  const html=document.documentElement;
-  const cur=html.getAttribute('data-theme');
-  const nx=cur==='dark'?'light':'dark';
-  html.setAttribute('data-theme',nx);
-  localStorage.setItem('iconforge-theme',nx);
-  document.getElementById('themeIcon').className=nx==='dark'?'fa-regular fa-moon':'fa-regular fa-sun';
-}
-(function(){const s=localStorage.getItem('iconforge-theme');if(s){document.documentElement.setAttribute('data-theme',s);document.getElementById('themeIcon').className=s==='dark'?'fa-regular fa-moon':'fa-regular fa-sun';}})();
+/* ═══ DEMO ICON KÜTÜPHANESİ ═══ */
+const ICON_LIB = {
+  sword:   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 2L22 9.5l-9 9-2.1-2.1 2-2-5-5 2-2-2.1-2.1zM3 21l3.5-3.5 2.1 2.1L5 23z"/></svg>',
+  heart:   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-9.5-9C.8 8.5 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.2 4.5 4.5 8C19 16.5 12 21 12 21z"/></svg>',
+  gem:     '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3h12l4 6-10 12L2 9z"/></svg>',
+  coin:    '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><text x="12" y="16" font-size="10" text-anchor="middle" fill="#000" font-weight="bold">$</text></svg>',
+  star:    '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>',
+  shield:  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l9 4v6c0 5.5-3.8 10.7-9 12-5.2-1.3-9-6.5-9-12V6z"/></svg>',
+  trophy:  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4h10v3a5 5 0 01-10 0V4zm-2 0H3v3a4 4 0 004 4V9a2 2 0 01-2-2V4zm14 0h2v3a4 4 0 01-4 4V9a2 2 0 002-2V4zM10 14h4v3h3v3H7v-3h3z"/></svg>'
+};
 
-/* ═══ SEARCH ═══ */
-async function doSearch(){
-  const query=document.getElementById('searchInput').value.trim();
-  if(!query){toast('Type something to search','info');return;}
-  
-  const grid=document.getElementById('resultsGrid');
-  grid.innerHTML=`<div class="loading" style="grid-column:1/-1;"><i class="fa-solid fa-circle-notch"></i><div style="margin-top:10px;">Searching 200K+ icons...</div></div>`;
-  document.getElementById('resultCount').textContent='...';
-  
-  try{
-    // Iconify search API - 24 results, prioritize game-icons, mdi, twemoji
-    const res=await fetch(`https://api.iconify.design/search?query=${encodeURIComponent(query)}&limit=32`);
-    const data=await res.json();
-    
-    if(!data.icons||!data.icons.length){
-      grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1;"><i class="fa-regular fa-face-frown"></i><h3>No results</h3><p>Try a different word (in English)</p></div>`;
-      document.getElementById('resultCount').textContent='0';
+/* ═══ ARAMA ═══ */
+function quickSearch(term) {
+  document.getElementById('searchInput').value = term;
+  searchIcons();
+}
+
+function searchIcons() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const container = document.getElementById('resultsContainer');
+  const count = document.getElementById('resultCount');
+
+  if (!q) {
+    container.innerHTML = '<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><h3>Search to begin</h3><p>Type a keyword</p></div>';
+    count.textContent = '0';
+    return;
+  }
+
+  container.innerHTML = '<div class="loading"><i class="fa-solid fa-spinner"></i><p>Forging...</p></div>';
+
+  setTimeout(() => {
+    const matches = Object.keys(ICON_LIB).filter(k => k.includes(q));
+    STATE.results = matches;
+    count.textContent = matches.length;
+
+    if (matches.length === 0) {
+      container.innerHTML = '<div class="empty-state"><i class="fa-solid fa-face-frown"></i><h3>No icons found</h3><p>Try: sword, heart, gem, coin, star, shield</p></div>';
       return;
     }
-    
-    STATE.searchResults=data.icons;
-    document.getElementById('resultCount').textContent=data.icons.length;
-    
-    // Render results
-    grid.innerHTML='';
-    data.icons.forEach(iconKey=>{
-      const [prefix,name]=iconKey.split(':');
-      const card=document.createElement('div');
-      card.className='result-card';
-      card.dataset.icon=iconKey;
-      card.innerHTML=`<img src="https://api.iconify.design/${prefix}/${name}.svg?color=%23${getComputedStyle(document.documentElement).getPropertyValue('--text').trim().replace('#','')}" style="width:100%;height:100%;" loading="lazy" alt="${name}">`;
-      card.onclick=()=>selectIcon(iconKey,card);
-      grid.appendChild(card);
+
+    let html = '<div class="results-grid">';
+    matches.forEach(name => {
+      html += `<div class="result-card" onclick="selectIcon('${name}', this)">${ICON_LIB[name]}</div>`;
     });
-    
-    // Auto select first
-    if(data.icons[0]){
-      setTimeout(()=>{
-        const firstCard=grid.querySelector('.result-card');
-        if(firstCard)selectIcon(data.icons[0],firstCard);
-      },200);
-    }
-  }catch(e){
-    grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1;"><i class="fa-solid fa-triangle-exclamation" style="color:var(--danger);"></i><h3>Connection error</h3><p>Check your internet</p></div>`;
-    toast('Failed to fetch icons','error');
-  }
+    html += '</div>';
+    container.innerHTML = html;
+    toast(`Found ${matches.length} icon(s)`, 'success');
+  }, 400);
 }
 
-function quickSearch(term){
-  document.getElementById('searchInput').value=term;
-  doSearch();
-}
-
-async function selectIcon(iconKey,cardEl){
-  document.querySelectorAll('.result-card').forEach(c=>c.classList.remove('selected'));
-  if(cardEl)cardEl.classList.add('selected');
-  
-  const [prefix,name]=iconKey.split(':');
-  
-  try{
-    // Fetch full SVG body from Iconify
-    const res=await fetch(`https://api.iconify.design/${prefix}.json?icons=${name}`);
-    const data=await res.json();
-    
-    if(data&&data.icons&&data.icons[name]){
-      const iconData=data.icons[name];
-      STATE.selectedIcon={
-        prefix,
-        name,
-        body: iconData.body,
-        width: iconData.width||data.width||24,
-        height: iconData.height||data.height||24
-      };
-      document.getElementById('previewSection').style.display='block';
-      updatePreview();
-    }
-  }catch(e){
-    toast('Failed to load icon','error');
-  }
-}
-
-/* ═══ STYLE ═══ */
-function setStyle(style){
-  STATE.currentStyle=style;
-  document.querySelectorAll('.style-card').forEach(c=>c.classList.toggle('active',c.dataset.style===style));
-  
-  // Apply style presets
-  const presets={
-    roblox:{outline:6,glow:0,shadow:true,highlight:true,gradient:true},
-    anime:{outline:3,glow:8,shadow:false,highlight:true,gradient:true},
-    cyber:{outline:2,glow:14,shadow:false,highlight:false,gradient:false},
-    cartoon:{outline:8,glow:0,shadow:true,highlight:true,gradient:false},
-    fantasy:{outline:4,glow:6,shadow:true,highlight:true,gradient:true},
-    minimal:{outline:0,glow:0,shadow:false,highlight:false,gradient:false}
-  };
-  const p=presets[style];
-  if(p){
-    document.getElementById('outlineWidth').value=p.outline;
-    document.getElementById('outline-val').textContent=p.outline+'px';
-    document.getElementById('glowAmount').value=p.glow;
-    document.getElementById('glow-val').textContent=p.glow+'px';
-    document.getElementById('tgl-shadow').classList.toggle('active',p.shadow);
-    document.getElementById('tgl-highlight').classList.toggle('active',p.highlight);
-    document.getElementById('tgl-gradient').classList.toggle('active',p.gradient);
-  }
+/* ═══ SEÇİM ═══ */
+function selectIcon(name, el) {
+  document.querySelectorAll('.result-card').forEach(c => c.classList.remove('selected'));
+  if (el) el.classList.add('selected');
+  STATE.selectedIcon = { name, svg: ICON_LIB[name] };
   updatePreview();
 }
 
-/* ═══ COLOR ═══ */
-document.getElementById('primaryColor').addEventListener('input',e=>{
-  STATE.primaryColor=e.target.value;
-  document.getElementById('primaryHex').textContent=e.target.value.toUpperCase();
+/* ═══ STİL ═══ */
+function setStyle(style) {
+  STATE.style = style;
+  document.querySelectorAll('.style-card').forEach(c => c.classList.toggle('active', c.dataset.style === style));
   updatePreview();
-});
-
-/* ═══ BG ═══ */
-document.querySelectorAll('.bg-tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.bg-tab').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const pb=document.getElementById('previewBox');
-    pb.className='preview-box';
-    if(btn.dataset.bg!=='checker')pb.classList.add('bg-'+btn.dataset.bg);
-  });
-});
-
-/* ═══ STYLE GENERATOR ═══ */
-function generateStyledSvg(){
-  if(!STATE.selectedIcon)return '';
-  
-  const {body,width,height}=STATE.selectedIcon;
-  const color=STATE.primaryColor;
-  const outline=parseInt(document.getElementById('outlineWidth').value);
-  const glow=parseInt(document.getElementById('glowAmount').value);
-  const hasShadow=document.getElementById('tgl-shadow').classList.contains('active');
-  const hasHighlight=document.getElementById('tgl-highlight').classList.contains('active');
-  const hasGradient=document.getElementById('tgl-gradient').classList.contains('active');
-  
-  // Generate gradient color (lighter version)
-  const lighterColor=adjustColor(color,30);
-  const darkerColor=adjustColor(color,-40);
-  const outlineColor=adjustColor(color,-60);
-  
-  const id='ig'+Math.random().toString(36).substr(2,5);
-  let defs='<defs>';
-  let fill=color;
-  
-  if(hasGradient){
-    defs+=`<linearGradient id="${id}-g" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="${lighterColor}"/>
-      <stop offset="1" stop-color="${color}"/>
-    </linearGradient>`;
-    fill=`url(#${id}-g)`;
-  }
-  
-  if(glow>0){
-    defs+=`<filter id="${id}-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="${glow/3}" result="blur"/>
-      <feFlood flood-color="${color}" flood-opacity="0.8"/>
-      <feComposite in2="blur" operator="in"/>
-      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>`;
-  }
-  
-  if(hasShadow){
-    defs+=`<filter id="${id}-shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="2"/>
-      <feOffset dx="0" dy="4"/>
-      <feFlood flood-color="#000" flood-opacity="0.4"/>
-      <feComposite in2="SourceAlpha" operator="in"/>
-      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>`;
-  }
-  
-  defs+='</defs>';
-  
-  // Build modified body - inject fill and stroke into paths
-  let modifiedBody=body;
-  
-  // Replace any fill/stroke attributes with our color
-  modifiedBody=modifiedBody.replace(/fill="(?!none)[^"]*"/g,'');
-  modifiedBody=modifiedBody.replace(/stroke="(?!none)[^"]*"/g,'');
-  
-  // Add fill via group
-  let filterAttr='';
-  if(glow>0)filterAttr+=` filter="url(#${id}-glow)"`;
-  else if(hasShadow)filterAttr+=` filter="url(#${id}-shadow)"`;
-  
-  // Outline layer (behind)
-  let outlineLayer='';
-  if(outline>0){
-    outlineLayer=`<g fill="none" stroke="${outlineColor}" stroke-width="${outline}" stroke-linejoin="round" stroke-linecap="round">${modifiedBody}</g>`;
-  }
-  
-  // Fill layer
-  const fillLayer=`<g fill="${fill}"${filterAttr}>${modifiedBody}</g>`;
-  
-  // Highlight layer (top)
-  let highlightLayer='';
-  if(hasHighlight){
-    highlightLayer=`<g fill="${lighterColor}" opacity="0.4" transform="translate(-1,-1) scale(0.9)" transform-origin="${width/2} ${height/2}">${modifiedBody}</g>`;
-  }
-  
-  const finalSvg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="-${outline} -${outline} ${width+outline*2} ${height+outline*2}" width="256" height="256">${defs}${outlineLayer}${fillLayer}${highlightLayer}</svg>`;
-  
-  return finalSvg;
 }
 
-function adjustColor(hex,amount){
-  hex=hex.replace('#','');
-  let r=parseInt(hex.substr(0,2),16);
-  let g=parseInt(hex.substr(2,2),16);
-  let b=parseInt(hex.substr(4,2),16);
-  r=Math.max(0,Math.min(255,r+amount));
-  g=Math.max(0,Math.min(255,g+amount));
-  b=Math.max(0,Math.min(255,b+amount));
-  return '#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');
+/* ═══ ARKAPLAN ═══ */
+function setBg(bg, el) {
+  STATE.bg = bg;
+  const box = document.getElementById('previewBox');
+  box.className = 'preview-box' + (bg !== 'default' ? ' bg-' + bg : '');
+  document.querySelectorAll('.bg-tab').forEach(t => t.classList.remove('active'));
+  if (el) el.classList.add('active');
 }
 
-function updatePreview(){
-  if(!STATE.selectedIcon)return;
-  const svg=generateStyledSvg();
-  document.getElementById('preview-svg').innerHTML=svg;
+/* ═══ ÖNİZLEME GÜNCELLE ═══ */
+function updatePreview() {
+  const box = document.getElementById('preview-svg');
+  if (!STATE.selectedIcon) {
+    box.innerHTML = '<div class="empty-state" style="padding:20px"><i class="fa-solid fa-image"></i><p>Select an icon</p></div>';
+    return;
+  }
+  const color = document.getElementById('primaryColor').value;
+  document.getElementById('primaryHex').textContent = color.toUpperCase();
+  const shadow = document.getElementById('tgl-shadow').classList.contains('active');
+  const bevel = document.getElementById('tgl-bevel').classList.contains('active');
+  const gradient = document.getElementById('tgl-gradient').classList.contains('active');
+  const glow = document.getElementById('tgl-glow').classList.contains('active');
+  const outline = document.getElementById('tgl-outline').classList.contains('active');
+
+  let filters = [];
+  if (glow)    filters.push(`drop-shadow(0 0 14px ${color})`);
+  if (shadow)  filters.push('drop-shadow(0 6px 8px rgba(0,0,0,0.6))');
+  if (bevel)   filters.push('drop-shadow(0 -1.5px 0 rgba(255,255,255,0.6))');
+  filters.push('saturate(1.6) contrast(1.15)');
+
+  const fillStyle = gradient
+    ? `background:linear-gradient(180deg, ${lighten(color,25)}, ${color}, ${darken(color,30)});-webkit-background-clip:text;background-clip:text;color:transparent;`
+    : `color:${color};`;
+  const strokeStyle = outline ? 'stroke:#000;stroke-width:1.5;paint-order:stroke;' : '';
+
+  box.innerHTML = `<div style="${fillStyle}filter:${filters.join(' ')};width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+    ${STATE.selectedIcon.svg.replace('<svg', `<svg style="${strokeStyle}"`)}
+  </div>`;
 }
 
-/* ═══ EXPORT ═══ */
-function copySvg(){
-  if(!STATE.selectedIcon){toast('Pick an icon first','info');return;}
-  const svg=generateStyledSvg();
-  navigator.clipboard.writeText(svg).then(()=>toast('SVG copied to clipboard!','success'));
+/* ═══ RENK YARDIMCILARI ═══ */
+function lighten(hex, pct) {
+  const n = parseInt(hex.slice(1), 16);
+  let r = (n >> 16) + pct, g = ((n >> 8) & 0xff) + pct, b = (n & 0xff) + pct;
+  r = Math.min(255, r); g = Math.min(255, g); b = Math.min(255, b);
+  return '#' + ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
+}
+function darken(hex, pct) {
+  const n = parseInt(hex.slice(1), 16);
+  let r = (n >> 16) - pct, g = ((n >> 8) & 0xff) - pct, b = (n & 0xff) - pct;
+  r = Math.max(0, r); g = Math.max(0, g); b = Math.max(0, b);
+  return '#' + ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
 }
 
-function downloadSvg(){
-  if(!STATE.selectedIcon){toast('Pick an icon first','info');return;}
-  const svg=generateStyledSvg();
-  const blob=new Blob([svg],{type:'image/svg+xml'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;
-  a.download=`iconforge-${STATE.selectedIcon.name}-${STATE.currentStyle}.svg`;
-  a.click();
-  URL.revokeObjectURL(url);
-  toast('SVG downloaded!','success');
-}
-
-function downloadPng(){
-  if(!STATE.selectedIcon){toast('Pick an icon first','info');return;}
-  const svg=generateStyledSvg();
-  const blob=new Blob([svg],{type:'image/svg+xml'});
-  const url=URL.createObjectURL(blob);
-  const img=new Image();
-  img.onload=function(){
-    const canvas=document.createElement('canvas');
-    canvas.width=512;
-    canvas.height=512;
-    const ctx=canvas.getContext('2d');
-    ctx.drawImage(img,0,0,512,512);
-    canvas.toBlob(b=>{
-      const a=document.createElement('a');
-      a.href=URL.createObjectURL(b);
-      a.download=`iconforge-${STATE.selectedIcon.name}-${STATE.currentStyle}.png`;
-      a.click();
-      URL.revokeObjectURL(a.href);
-      toast('PNG downloaded!','success');
-    });
+/* ═══ İNDİRME ═══ */
+function downloadPng() {
+  if (!STATE.selectedIcon) { toast('Select an icon first', 'danger'); return; }
+  const node = document.getElementById('preview-svg').querySelector('svg');
+  if (!node) return;
+  const svgData = new XMLSerializer().serializeToString(node);
+  const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512; canvas.height = 512;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, 512, 512);
+    const a = document.createElement('a');
+    a.download = STATE.selectedIcon.name + '-iconforge.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
     URL.revokeObjectURL(url);
+    toast('Downloaded!', 'success');
   };
-  img.onerror=()=>{
-    toast('PNG export failed (try Copy SVG instead)','error');
-    URL.revokeObjectURL(url);
-  };
-  img.src=url;
+  img.src = url;
+}
+
+/* ═══ TEMA ═══ */
+function toggleTheme() {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
 }
 
 /* ═══ TOAST ═══ */
-function toast(msg,type){
-  const stack=document.getElementById('toast-stack');
-  const t=document.createElement('div');
-  t.className='toast';
-  const color=type==='success'?'var(--success)':type==='error'?'var(--danger)':'var(--accent)';
-  const icon=type==='success'?'fa-circle-check':type==='error'?'fa-circle-xmark':'fa-info-circle';
-  t.innerHTML=`<i class="fa-solid ${icon}" style="color:${color}"></i><span>${msg}</span>`;
+function toast(msg, type = 'success') {
+  const stack = document.getElementById('toast-stack');
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-check' : 'fa-xmark'}" style="color:var(--${type === 'success' ? 'success' : 'danger'});margin-right:8px"></i> ${msg}`;
   stack.appendChild(t);
-  setTimeout(()=>t.remove(),2500);
+  setTimeout(() => t.remove(), 2800);
 }
 
-/* Focus state for search bar */
-document.getElementById('searchInput').addEventListener('focus',()=>document.getElementById('searchBar').classList.add('focused'));
-document.getElementById('searchInput').addEventListener('blur',()=>document.getElementById('searchBar').classList.remove('focused'));
+/* ═══ EVENT ═══ */
+document.getElementById('searchInput').addEventListener('focus', () => document.getElementById('searchBar').classList.add('focused'));
+document.getElementById('searchInput').addEventListener('blur', () => document.getElementById('searchBar').classList.remove('focused'));
+document.getElementById('searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') searchIcons(); });
 </script>
 </body>
 </html>
